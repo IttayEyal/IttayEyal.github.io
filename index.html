@@ -1,0 +1,208 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=700" />
+  <title>Ittay Eyal</title>
+  <link rel="stylesheet" type="text/css" media="screen,print" href="css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<br>
+<br>
+
+<div class="row">
+
+<div class="col-sm-3">
+<img class="img-responsive" style="max-height:250px;" src="img/sitePic.jpg" alt="photo" height="250"/>
+</div> <!--col-->
+
+<div class="col-sm-6">
+<h1>Ittay Eyal</h1>
+
+<p class="lead">
+<small>Post-doctoral associate<br>
+Systems and Networking Group, <br>
+<a href="http://www.cs.cornell.edu/">Department of Computer Science</a>,<br />
+<a href="http://www.cornell.edu/">Cornell University</a>
+</small></p>
+
+<p class="lead"><small>
+<a href="mailto:ittay.eyal@cornell.edu">ittay.eyal@cornell.edu</a> <br>
+<a href="https://twitter.com/ittayeyal">@ittayeyal</a>
+</small></p>
+</div> <!--col-->
+</div> <!-- row -->
+
+<br />
+
+<!--<div class="alert alert-success">
+<p class="text-center">I am looking for PhD students. If you are a Cornell CS student, email me. Otherwise, <a href="http://www.cs.cornell.edu/phd/admissions">apply</a> to Cornell!</p>
+<p class="text-center"><strong>Upcoming visits in Ithaca: Sept 29 through Oct 2 (with Brown Bag and AI Seminar talks).</strong></p>
+</div>-->
+
+<h2 id="research">Research</h2>
+
+<p>
+My Research Interests are distributed systems and algorithms, specifically distributed storage algorithms, the distributed aspects of cryptourrency, and reliable aggregation in distributed sensor networks.
+I completed my Ph.D. in 2013 in the Technion's Electrical Engineering Department under the supervision of Prof. Idit Keidar and Prof. Raphi Rom. 
+</p>
+
+<h3>Bitcoin-NG</h3> 
+
+<p>
+Blockchain protocols, implementing variants of Bitcoin's blockchain, have an inherent scalability limit. This limit bounds the possibility to improve the user-perceived latency and maximum throughput. 
+The consequence is that one must trade off bandwidth, latency, and security. 
+We present metrics for evaluating blockchain protocols, and measurements from large scale experiments of the Bitcoin core client. 
+</p>
+<p>
+The blockchain promises to become an infrastructure for anonymous online transactions, cheap remittance and smart contracts. 
+To realize this promise in global scale, a blockchain should enable better latency and bandwidth. 
+We present bitcoin-NG, a novel blockchain protocol that allows for bandwidth limited only by the individual nodes' processing power and latency determined by the network's property. 
+</p>
+
+<div class="publication"> 
+<span class="pub_title">Bitcoin-NG: A Next Generation Blockchain</span> 
+<span class="pub_author">With Adem Efe Gencer, Emin Gün Sirer, and Robbert van Renesse</span> 
+<!-- <span class="pub_appear_in">In <span class="pub_venue">the IEEE Symposium on Security and Privacy (Oakland)</span>, 2015. </span>  -->
+<span class="pub_misc"><a href="https://www.youtube.com/watch?v=gpJrGuZEJsY&feature=youtu.be&t=2040">[Youtube]</a></span> 
+<!-- <span class="pub_misc"><a href="publications/btcPoolsSP15.pdf">[Paper]</a></span>  -->
+</div>
+
+<h3>The Miner's Dilemma</h3> 
+
+<p>
+One of the most central threats on the Bitcoin system is centralization, where a small number of entities control the majority of mining power, and can therefore take control of the system. 
+In Bitcoin and most similar cryptocurrencies, small miners tend to form mining pools. 
+On the one hand, this is positive, as pools enable the existance of small miners a
+The largest such entities are open mining pools, where miners join forces to mine together. 
+</p>
+
+<div class="publication"> 
+<span class="pub_title"><a href="pdf path">The Miner's Dilemma</a></span> 
+<span class="pub_author">AUTHORS</span> 
+<span class="pub_appear_in">In <span class="pub_venue">the IEEE Symposium on Security and Privacy (Oakland)</span>, 2015. </span> 
+<span class="pub_bibtex"><a href="publications/btcPoolsSP15.bib">[Bibtex]</a></span> 
+<span class="pub_misc"><a href="publications/btcPoolsSP15.pdf">[Paper]</a></span> 
+</div>
+
+<h3>Selfish Mining</h3> 
+
+<p>
+Since its inception, Bitcoin's blockchain was considered secure against attackers commanding less than 50% of the mining power. 
+Specifically, it was believed that a minority attacker cannot create more blockchain blocks than his fair share. 
+We show that this is not the case. 
+A minority miner can use a strategy we call selfish mining, where he generates blocks, keep them secret, and publishes them judiciously according to the system state. 
+With this attack, a minority miner's presence in the blockchain can grow beyond its fair share. 
+</p> 
+<p> 
+The implications of this phenomena are dangerous, since the revenue of an attacker grows superlinearly with its size. 
+Miners are motivated to join such an attacker, and the attacker is motivated to join other miners, forming a pool with a size that tends towards a majority of the minining power. 
+If such a huge pool forms, the system becomes centralized, losing its basic premise. 
+</p> 
+
+<div class="publication"> 
+<span class="pub_title"><a href="publications/btcProcFC.pdf">Majority is not Enough: Bitcoin Mining is Vulnerable</a></span> 
+<span class="pub_author">With Emin Gün Sirer</span> 
+<span class="pub_appear_in">In <span class="pub_venue">the the 18th International Conference on Financial Cryptography and Data Security (FC)</span>, 2014. </span> 
+<span class="pub_bibtex"><a href="publications/btcProcFC.bib">[Bibtex]</a></span> 
+<span class="pub_misc"><a href="publications/btcProcFC.pdf">[Paper]</a></span> 
+</div>
+
+<h3>Distributed Storage Architectures</h3> 
+
+<div class="publication"> 
+<span class="pub_title"><a href="publications/txnCacheICDCS15.pdf">Cache Serializability: Reducing Inconsistency in Edge Transactions</a></span> 
+<span class="pub_author">With Ken Birman and Robbert van Renesse</span> 
+<span class="pub_appear_in">In <span class="pub_venue">the IEEE International Conference on Distributed Computing Systems (ICDCS)</span>, 2015. </span> 
+<span class="pub_bibtex"><a href="publications/txnCacheICDCS15.bib">[Bibtex]</a></span> 
+<span class="pub_misc"><a href="publications/txnCacheICDCS15.pdf">[Paper]</a></span> 
+</div>
+
+
+<ul class="list-unstyled">
+
+<!--<li>
+<div class="publication">
+<span class="pub_title"><a href="pdf path">PAPER NAME</a></span>
+<span class="pub_author">AUTHORS</span>
+<span class="pub_appear_in">In <span class="pub_venue">CONFERENCE NAME</span>, YEAR. </span>
+<span class="pub_bibtex"><a href="bibtexRef">[Bibtex]</a></span>
+<span class="pub_misc"><a href="pdf path">[Tech report]</a></span>
+</div>
+</li>-->
+
+</ul>
+
+
+<h2 id="teaching">Teaching</h2>
+
+<ul class="list-unstyled">
+<li>Spring 2016: Principals and Practice of Cryptocurrencies (CS 5437)</li>
+</ul>
+
+<h2 id="spf">Program Committees (upcoming)</h2>
+
+<!--<div class="alert alert alert-success">
+<p class="text-center">
+Deadlines of 
+<a href="http://www.ieee-security.org/TC/SP2016/cfpapers.html">Oakland</a>, 
+<a href="http://fc16.ifca.ai/bitcoin/cfp.html">Bitcoin</a>, 
+and 
+<a href="http://www.podc.org/podc2016/call-for-papers/">PODC</a> 
+are coming up. 
+<p>
+</div>-->
+
+<ul class="list">
+<li>
+<a href="http://www.ieee-security.org/TC/SP2016/cfpapers.html">Oakland 2016</a>
+</li><li>
+<a href="http://fc16.ifca.ai/bitcoin/cfp.html">Bitcoin 2016</a> (alongside FC'16) 
+</li><li>
+<a href="http://www.podc.org/podc2016/call-for-papers/">PODC 2016</a> 
+</ul>
+
+<h2 id="contact">Contact</h2>
+
+<p>
+<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> 
+<a href="mailto:ittay.eyal@cornell.edu">
+ittay.eyal@cornell.edu
+</a> <br>
+
+<!-- <img class="img-responsive" style="max-height:40px;" src="img/twitter.svg" alt="Twitter" height="10s"/> -->
+<img style="max-height:80px;" src="img/twitter.svg" alt="Twitter" height="15px"/>
+<a href="https://twitter.com/ittayeyal">
+@ittayeyal
+</a> 
+</p>
+
+<address>
+Gates 455, Cornell, <br />
+Ithaca, NY 14850, USA 
+<a href= "https://www.google.com/maps/place/Bill+and+Melinda+Gates+Hall/@42.4450017,-76.4807989,17z/data=!3m1!4b1!4m2!3m1!1s0x89d0818b5e725517:0x7098683a6a981542?hl=en-US">[map]</a>
+</address>
+
+<br />
+<br />
+
+</div> <!--container-->
+
+<div class="attribution"> 
+Theme by <a href="http://getbootstrap.com/">Bootstrap</a>, under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">MIT licenses</a>
+</div> 
+
+<div class="attribution"> 
+Twitter icon by <a href="http://www.elegantthemes.com" title="Elegant Themes">Elegant Themes</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>
+</div>
+
+</body>
+</html>

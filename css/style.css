@@ -1,0 +1,71 @@
+div.attribution {
+    text-align: center; 
+    font-size: 80%;
+    color: gray; 
+} 
+
+ul li .publication {
+    margin-bottom:15px;
+}
+
+div.publication {
+    display: list-item;
+    list-style-type: none;
+}
+
+div.publication .pub_title,
+div.publication .pub_author {
+    display:block;
+}
+
+div.publication .pub_appear_in {
+    display: block;
+}
+
+div.publication .pub_appear_in .pub_venue {
+    font-style: italic;
+}
+
+div.publication .pub_notes {
+    display: block;
+}
+
+div.publication .pub_slides,
+div.publication .pub_video,
+div.publication .pub_bibtex,
+div.publication .pub_code,
+div.publication .pub_misc {
+    display: inline;
+    font-size: 80%;
+    text-transform: uppercase;
+    padding-right: 5px;
+}
+
+ol.nested
+{
+    counter-reset: item;
+    list-style: none;
+    padding-left: 1.5em;
+}
+
+ol.nested li:before
+{
+    content: counters(item, ".") ". ";
+    counter-increment: item;
+}
+
+.responsive-video {
+position: relative;
+padding-bottom: 56.25%;
+padding-top: 60px; overflow: hidden;
+}
+
+.responsive-video iframe,
+.responsive-video object,
+.responsive-video embed {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
