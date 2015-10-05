@@ -11,6 +11,25 @@
 
 </head>
 
+<script type="text/javascript">
+    function toggleFirstName() {
+        if (firstName.style.display == 'inline') {
+            firstName.style.display = 'none'; 
+        } else {
+            firstName.style.display = 'inline'; 
+        }
+    }
+
+    function toggleFirstNameHeb() {
+        if (firstNameHeb.style.display == 'inline') {
+            firstNameHeb.style.display = 'none'; 
+        } else {
+            firstNameHeb.style.display = 'inline'; 
+        }
+    }
+
+</script>
+
 <body>
 
 <div class="container">
@@ -25,8 +44,23 @@
 <img class="img-responsive" style="max-height:250px;" src="img/sitePic.jpg" alt="photo" height="250"/>
 </div> <!--col-->
 
-<div class="col-sm-6">
-<h1>Ittay Eyal</h1>
+<div class="col-sm-9">
+    <div class="row">
+        <div class="col-sm-6"> 
+            <h1>
+            <span title="First name" style="cursor:help">Ittay</span>
+            <sup><div id="firstName" style="display:none;font-size:50%">&larr;First Name</div></sup> 
+            <span title="Last name" style="cursor:help">Eyal</span><sup><span style="font-size:50%"><a onclick="toggleFirstName();" href="#">?</a></span></sup>
+            </h1>
+        </div>
+        <div class="col-sm-6; text-align:left"> 
+            <h1> 
+            <sup><span style="font-size:50%"><a onclick="toggleFirstNameHeb();" href="#">?</a></span></sup><span title="שם פרטי" style="cursor:help">איתי</span>
+            <sup><div id="firstNameHeb" style="display:none;font-size:50%">&rarr;שם פרטי</div></sup> 
+            <span title="שם משפחה" style="cursor:help">אייל</span>
+            </h1>
+        </div>
+    </div> 
 
 <p class="lead">
 <small>Post-doctoral associate<br>
@@ -35,13 +69,17 @@ Systems and Networking Group, <br>
 <a href="http://www.cornell.edu/">Cornell University</a>
 </small></p>
 
-<p class="lead"><small>
-<a href="mailto:ittay.eyal@cornell.edu">ittay.eyal@cornell.edu</a> <br>
-<a href="https://twitter.com/ittayeyal">@ittayeyal</a> <br> 
+<div class="contact"> 
+<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> 
+<a href="mailto:ittay.eyal@cornell.edu">ittay.eyal@cornell.edu</a> 
+<br>
+<img style="max-height:80px;" src="img/twitter.svg" alt="Twitter" height="15px"/>
+<a href="https://twitter.com/ittayeyal">@ittayeyal</a> 
+<br>
 Gates 455, Cornell, <br>
 Ithaca, NY 14850, USA 
 <a href= "https://www.google.com/maps/place/Bill+and+Melinda+Gates+Hall/@42.4450017,-76.4807989,17z/data=!3m1!4b1!4m2!3m1!1s0x89d0818b5e725517:0x7098683a6a981542?hl=en-US">[map]</a>
-</small></p>
+</div> <!--contact--> 
 </div> <!--col-->
 </div> <!-- row -->
 
@@ -80,10 +118,10 @@ We present bitcoin-NG, a novel blockchain protocol that allows for bandwidth lim
 <span class="pub_title">Bitcoin-NG: A Next Generation Blockchain</span>. 
 <span class="pub_author">With Adem Efe Gencer, Emin Gün Sirer, and Robbert van Renesse</span> 
 <br> 
-<!-- <span class="pub_appear_in">In <span class="pub_venue">the IEEE Symposium on Security and Privacy (Oakland)</span>, 2015. </span>  -->
 <span class="pub_appear_in">In <span class="pub_venue">ScalingBitcoin workshop</span>, Montreal, 2015. </span> 
 <span class="pub_misc"><a href="https://www.youtube.com/watch?v=gpJrGuZEJsY&feature=youtu.be&t=2040">[Youtube]</a></span> 
-<!-- <span class="pub_misc"><a href="publications/btcPoolsSP15.pdf">[Paper]</a></span>  -->
+<br> 
+<span class="pub_appear_in">Technical report coming soon. </span> 
 </div>
 
 <h3>The Miner's Dilemma</h3> 
@@ -129,6 +167,11 @@ If such a huge pool forms, the system becomes centralized, losing its basic prem
 
 <h3>Distributed Storage Architectures</h3> 
 
+Large scale data stores refrain from supporting consistent transactional operations due to performance concerns. 
+We propose an architecture that utilizes predictable (though inaccurate) object access to improve transaction performance. 
+However, even with perfect backend transactional support, the users of large Internet applications typically access incoherent caches. 
+We present T-Cache, a transaction-aware cache layer. We demonstrate with realistic workloads that T-Cache significantly improves consistency for cache-accessing users. 
+
 <div class="publication"> 
 <span class="pub_title"><a href="publications/txnCacheICDCS15.pdf">Cache Serializability: Reducing Inconsistency in Edge Transactions</a></span>. 
 <span class="pub_author">With Ken Birman and Robbert van Renesse</span> 
@@ -155,6 +198,11 @@ If such a huge pool forms, the system becomes centralized, losing its basic prem
 <span class="pub_misc"><a href="publications/multilogLADIS13.pdf">[Paper]</a></span> 
 <span class="pub_misc"><a href="publications/multilogSOSPPoster.pdf">[SOSP'15 poster]</a></span> 
 </div>
+
+Key-value stores (KVSs), maintained by external cloud providers are the choice object store of numerous Internet applications. 
+However, KVS cloud providers can and do temporarily fail, and the natural solution is to replicate the object store among multiple providers. 
+However, standard replication techniques do not work in this scenario, due to the limited interface of KVSs. 
+We introduce an algorithm for a KVS replicated among multiple providers, and demonstrate its efficiency with experiments and simulations. 
 
 <div class="publication"> 
 <span class="pub_title"><a href="publications/icDSN12.pdf">Robust Data Sharing with Key-Value Stores</a></span>. 
@@ -209,8 +257,7 @@ If such a huge pool forms, the system becomes centralized, losing its basic prem
 <span class="pub_title">Distributed Data Clustering in Sensor Networks</span> 
 <span class="pub_author">With Idit Keidar and Raphi Rom</span> 
 <br>
-<ul>
-<li>
+
     <div class="publication"> 
     <span class="pub_title"><a href="publications/distributedClusteringDC.pdf">Distributed Data Clustering in Sensor Networks</a></span>. 
     <span class="pub_appear_in"><span class="pub_venue">Distributed Computing, Volume 24, Issue 5 (2011), pages 207-222</span>. </span> 
@@ -218,25 +265,22 @@ If such a huge pool forms, the system becomes centralized, losing its basic prem
     <span class="pub_misc"><a href="publications/distributedClusteringDC.pdf">[Paper]</a></span> 
     <span class="pub_misc"><a href="http://link.springer.com/article/10.1007/s00446-011-0143-7">[Springer]</a></span> 
     </div>
-</li>
-<li>
+
     <div class="publication"> 
     <span class="pub_title"><a href="publications/distributedClassificationPODC10.pdf">Distributed Data Classification in Sensor Networks</a></span>. 
     <span class="pub_appear_in">In <span class="pub_venue">the 29th Annual ACM SIGACT-SIGOPS Symposium on Principles of Distributed Computing (PODC)</span>, 2010. </span> 
     <span class="pub_bibtex"><a href="publications/distributedClassificationPODC10.bib">[Bibtex]</a></span> 
     <span class="pub_misc"><a href="publications/distributedClassificationPODC10.pdf">[Paper]</a></span> 
     </div> 
-</li>
-<li>
+
     <div class="publication"> 
     <span class="pub_title"><a href="publications/outlierDetectionHotDep09.pdf">Distributed Clustering for Robust Aggregation in Large Networks</a></span>. 
     <span class="pub_appear_in">In <span class="pub_venue">the 5th Workshop on Hot Topics in System Dependability (HotDep)</span>, 2009. </span> 
     <span class="pub_bibtex"><a href="publications/outlierDetectionHotDep09.bib">[Bibtex]</a></span> 
     <span class="pub_misc"><a href="publications/outlierDetectionHotDep09.pdf">[Paper]</a></span> 
     </div>
-</li>
-</ul>
-</div>
+
+    </div>
 
 <div class="page-header">
 <h2 id="teaching">Teaching</h2>
@@ -270,33 +314,10 @@ are coming up.
 <a href="http://www.podc.org/podc2016/call-for-papers/">PODC 2016</a> 
 </ul>
 
-<div class="page-header">
-<h2 id="contact">Contact</h2>
-</div>
-
-<p>
-<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> 
-<a href="mailto:ittay.eyal@cornell.edu">
-ittay.eyal@cornell.edu
-</a> <br>
-
-<!-- <img class="img-responsive" style="max-height:40px;" src="img/twitter.svg" alt="Twitter" height="10s"/> -->
-<img style="max-height:80px;" src="img/twitter.svg" alt="Twitter" height="15px"/>
-<a href="https://twitter.com/ittayeyal">
-@ittayeyal
-</a> 
-</p>
-
-<address>
-Gates 455, Cornell, <br />
-Ithaca, NY 14850, USA 
-<a href= "https://www.google.com/maps/place/Bill+and+Melinda+Gates+Hall/@42.4450017,-76.4807989,17z/data=!3m1!4b1!4m2!3m1!1s0x89d0818b5e725517:0x7098683a6a981542?hl=en-US">[map]</a>
-</address>
-
-<br />
-<br />
-
 </div> <!--container-->
+
+<br />
+<br />
 
 <div class="attribution"> 
 Theme by <a href="http://getbootstrap.com/">Bootstrap</a>, under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">MIT licenses</a>

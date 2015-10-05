@@ -1,7 +1,12 @@
 div.attribution {
     text-align: center; 
-    font-size: 80%;
+    font-size: 70%;
     color: gray; 
+} 
+
+div.contact {
+    display: block;
+    font-size: 100%;
 } 
 
 ul li .publication {
@@ -11,6 +16,7 @@ ul li .publication {
 div.publication {
     display: list-item;
     list-style-type: circle;
+    margin-left:25px;
 }
 
 div.publication .pub_title {
