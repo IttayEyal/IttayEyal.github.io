@@ -5,21 +5,25 @@ div.attribution {
 } 
 
 ul li .publication {
-    margin-bottom:15px;
+    margin-bottom:0px;
 }
 
 div.publication {
     display: list-item;
-    list-style-type: none;
+    list-style-type: circle;
 }
 
-div.publication .pub_title,
+div.publication .pub_title {
+    display: inline;
+    font-weight: bold; 
+}
+
 div.publication .pub_author {
-    display:block;
+    display: inline;
 }
 
 div.publication .pub_appear_in {
-    display: block;
+    display: inline;
 }
 
 div.publication .pub_appear_in .pub_venue {
