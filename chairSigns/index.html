@@ -2,15 +2,28 @@
 <html>
 <head>
 <title>Chair Sign</title>
-<link href="styles/style.css" rel="stylesheet" type="text/css">
+<link href="main.css" rel="stylesheet" type="text/css">
 <meta name="mobile-web-app-capable" content="yes">
 </head>
 
 <body>
-<div id='a' contenteditable="true">Test</div>
-<input id='b' type='hidden'> 
+<div id='shown' contenteditable="true">Test</div>
+<input id='hidden' type='hidden'> 
+
+<span id="plus" class="floatPlus" ontouchstart="plus()" z-index="99">
+<!-- <a href="#" class="float"> -->
+<span class="my-float">T</span>
+<!--<i class="fa fa-plus my-float"></i>-->
+</span>
+<!-- </a> -->
+
+<span id="minus" class="floatMinus">
+<!-- <a href="#" class="float"> -->
+<span class="my-float">-</span>
+<!--<i class="fa fa-plus my-float"></i>-->
+</span>
+<!-- </a> -->
 
 <script src="resize.js"></script>
 </body> 
 </html> 
-
