@@ -23,6 +23,12 @@ function plus() {
     fitSize(); 
 }
 
+function minus() {
+    counter -= 1; 
+    elemDiv.innerHTML = counter; 
+    fitSize(); 
+}
+
 // elemDiv.oninput = function() {
 function fitSize() {
   elemInput.value = elemDiv.innerHTML;
