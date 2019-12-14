@@ -5,10 +5,15 @@ div {
 
 *{padding:0;margin:0;} 
 
-@keyframes glowing {
+/*@keyframes glowing {
 0% { background-color: #2ba805; box-shadow: 0 0 3px #2ba805; }
 50% { background-color: #49e819; box-shadow: 0 0 10px #49e819; }
 100% { background-color: #2ba805; box-shadow: 0 0 3px #2ba805; }
+}*/
+
+@keyframes glowing {
+0% { background-color: #000000; }
+100% { background-color: #ffffff; }
 }
 
 .floatPlus{
