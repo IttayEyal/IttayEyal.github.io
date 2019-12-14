@@ -66,6 +66,10 @@ function fitSize() {
 // buttonBlink.onclick = function() {doBlink()};
 // document.body.appendChild(buttonBlink);
 // 
-function doBlink() {
-    document.body.style.backgroundColor = "gray";
+function doBlink() { 
+     document.body.style.animation = "glowing 50ms 3";
+     document.body.style.backgroundColor = "red";
+//      document.body.style.backgroundColor = "white";
+//      elemDiv.addClass("blink");
+//    document.body.addClass("blink"); 
 }
