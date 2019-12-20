@@ -46,7 +46,7 @@ function fitSize() {
     document.getElementById("hidden").style.fontSize = fontSize + "px";  
     divWidth = elemDiv.clientWidth; 
     divHeight = elemDiv.clientHeight; 
-  } 
+} 
 
 // Shrink: 
   while (divWidth > clientWidth || divHeight > clientHeight) {

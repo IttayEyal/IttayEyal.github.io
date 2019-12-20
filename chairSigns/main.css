@@ -1,6 +1,7 @@
 div {
   width: auto;
   display: inline-block;
+  user-select: none; 
 }
 
 *{padding:0;margin:0;} 
@@ -30,6 +31,7 @@ div {
     box-shadow: 2px 2px 3px #999;
     font-size: 50px;
     z-index: 9999;
+    user-select: none; 
 }
 
 .floatMinus{
@@ -46,6 +48,7 @@ div {
 	box-shadow: 2px 2px 3px #999;
     font-size: 50px;
     z-index: 9999;
+    user-select: none; 
 }
 
 .floatBlink{
@@ -62,9 +65,11 @@ div {
 	box-shadow: 2px 2px 3px #999;
     font-size: 50px;
     z-index: 9999;
+    user-select: none; 
 } 
 
 .my-float{
 	margin-top:22px;
     z-index: 9999;
+    user-select: none; 
 }
