@@ -17,6 +17,7 @@
   <link rel="stylesheet" type="text/css" media="screen,print" href="css/style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -114,12 +115,10 @@ I completed my Ph.D. in 2013 in the Technion's Electrical Engineering Department
 
 <p> 
 <ul>
-    <li> <b>Spring '21</b>: 048888 Blockchain and Cryptocurrencies. Tuesday 10:30-12:30. [<a href="https://docs.google.com/document/d/1aDwykuPsHWuxvOH31a9lq0xnZcFJC3BoeNpIVJ83q54">info</a>] <br>
-    (Previous: Winter '18-'19) 
-    <li> <b>Spring '21</b>: 046209 Operating Systems. Thursday 08:30-10:30, Online. [<a href="https://moodle.technion.ac.il/course/view.php?id=1528">Moodle</a>] <br>
-    (Previous: Spring '18, Spring '19, Spring '20)
-    <li> <b>Winter '20-'21</b>: 046280 Principles and Tools for Computer Security. Tuesdays 9:30-11:30. Online. [<a href="https://moodle.technion.ac.il/course/view.php?id=7531">Moodle</a>] [<a href="046280-2021-info.pdf">info</a>]
+    <li> <b>Spring '21</b>: 048888 Blockchain and Cryptocurrencies. Details TBA (Winter '18-'19) 
+    <li> <b>Winter '20-'21</b>: 046280 Principles and Tools for Computer Security. Tuesdays 9:30-11:30. [<a href="https://moodle.technion.ac.il/course/view.php?id=7531">Moodle</a>] [<a href="046280-2021-info.pdf">info</a>]
     <li> <b>Spring '20</b>: 046280 Principles and Tools for Computer Security. Tuesdays 9:30-11:30, Meyer 353.  
+    <li> <b>Spring '20</b>: 046209 Operating Systems. Thursday 08:30-10:30, Meyer 165. [<a href="https://moodle.technion.ac.il/course/view.php?id=1528">Moodle</a>] 
     <li> Seminar on blockchain and cryptocurrencies 
          (<a href="https://docs.google.com/spreadsheets/d/1U_wYoFGhpF4pfu4f9sc15S8OVW2u1WSC0fmF9tzC5cY">Winter '17-'18</a>, 
           <a href="https://docs.google.com/spreadsheets/d/1Me5GrJLvR70Hc1kpzHYCJH6AsIxCpFbtU8l3JPGBoHQ/edit#gid=0">Winter '19-'20</a>)
@@ -154,12 +153,62 @@ If you are a <u>registered student</u> be sure to <font color="red">pick a paper
     <li>Oded Naor (MSc, 2019 &#8594; PhD) 
     <li>Uri Kirstein (UG Project, 2020 &#8594; Certora) 
 </ul>
-</p> 
-<h2>Research</h2> 
+</p>
+ 
+<h1>Research</h1> 
 
 <p>
 <a href="https://scholar.google.ch/citations?user=1oUGY7cAAAAJ&hl=en&oi=ao">Publications in Google Scholar</a> 
 </p>
+
+<h2>Incentives in Blockchains</h2> 
+
+<p> 
+The security of blockchain protocols relies critically on incentives. 
+Anyone can join the system, so blockchains typically require the to expend resources in order to participate using Proof of Work (PoW). 
+They are incentivized to do so with rewards given in cryptocurrency. 
+This process is called mining. 
+</p>
+
+The initial security analysis of blockchain focused on showing it is secure against attackers controlling the majority of mining power. 
+Indeed, Bitcoin's blockchain was considered secure against attackers commanding less than 50% of the mining power. 
+We found that minority miners are in fact better off not following the prescribed strategy but instead following a different strategy we called  <b>Selfish Mining</b>.
+
+<div class="publication"> 
+<span class="pub_title"><a href="publications/btcProcFC.pdf">Majority is not Enough: Bitcoin Mining is Vulnerable</a></span>. 
+<span class="pub_author">With Emin Gün Sirer</span>
+<br>
+<span class="pub_appear_in">In <span class="pub_venue">the the 18th International Conference on Financial Cryptography and Data Security (FC)</span>, 2014. 
+<span class="pub_misc"><a href="publications/btcProcFC.pdf">[PDF]</a></span> 
+<span class="pub_bibtex"><a href="publications/btcProcFC.bib">[Bibtex]</a></span> 
+</span> 
+</div>
+
+<p>
+While Selfish Mining showed that the desired behavior is not a best response, finding the optimal strategy for a given blockchain protocol (e.g., Bitcoin, Ethereum) is another challenge. 
+The natural approach is to solve a Markov Decision Process (MDP), however the reward function is not linear. 
+Previous approaches converged to the solution by solving a series of MDPs. 
+We propose a more efficient solution that solves a single MDP adding a random termination mechanism. 
+<a href="https://https://www.youtube.com/watch?v=P8ESkfCHXZ4"> 
+<i class="fa fa-youtube-play" aria-hidden="true"></i> Roi Bar-Zur at AFT'20</a>
+</p>
+ADD HERE: Links to paper and blog posts. 
+
+
+
+
+
+
+The implications of this phenomena are dangerous, since the revenue of an attacker grows superlinearly with its size. 
+Miners are motivated to join such an attacker, and the attacker is motivated to join other miners, forming a pool with a size that tends towards a majority of the minining power. 
+If such a huge pool forms, the system becomes centralized, losing its basic premise. 
+</p> 
+
+
+
+
+
+
 
 <p>
 Selected projects: 
@@ -225,31 +274,6 @@ The largest such entities are open mining pools, where miners join forces to min
 <span class="pub_appear_in">In <span class="pub_venue">the IEEE Symposium on Security and Privacy (Oakland)</span>, 2015. </span> 
 <span class="pub_misc"><a href="publications/btcPoolsSP15.pdf">[PDF]</a></span> 
 <span class="pub_bibtex"><a href="publications/btcPoolsSP15.bib">[Bibtex]</a></span> 
-</div>
-
-<h3>Selfish Mining</h3> 
-
-<p>
-Since its inception, Bitcoin's blockchain was considered secure against attackers commanding less than 50% of the mining power. 
-Specifically, it was believed that a minority attacker cannot create more blockchain blocks than his fair share. 
-We show that this is not the case. 
-A minority miner can use a strategy we call selfish mining, where he generates blocks, keep them secret, and publishes them judiciously according to the system state. 
-With this attack, a minority miner's presence in the blockchain can grow beyond its fair share. 
-</p> 
-<p> 
-The implications of this phenomena are dangerous, since the revenue of an attacker grows superlinearly with its size. 
-Miners are motivated to join such an attacker, and the attacker is motivated to join other miners, forming a pool with a size that tends towards a majority of the minining power. 
-If such a huge pool forms, the system becomes centralized, losing its basic premise. 
-</p> 
-
-<div class="publication"> 
-<span class="pub_title"><a href="publications/btcProcFC.pdf">Majority is not Enough: Bitcoin Mining is Vulnerable</a></span>. 
-<span class="pub_author">With Emin Gün Sirer</span>
-<br>
-<span class="pub_appear_in">In <span class="pub_venue">the the 18th International Conference on Financial Cryptography and Data Security (FC)</span>, 2014. 
-<span class="pub_misc"><a href="publications/btcProcFC.pdf">[PDF]</a></span> 
-<span class="pub_bibtex"><a href="publications/btcProcFC.bib">[Bibtex]</a></span> 
-</span> 
 </div>
 
 <h3>Distributed Storage Architectures</h3> 
@@ -411,5 +435,8 @@ Theme by <a href="http://getbootstrap.com/">Bootstrap</a>, under <a href="https:
 Twitter icon by <a href="http://www.elegantthemes.com" title="Elegant Themes">Elegant Themes</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>
 </div>
 
+<div>Youtube icons by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+ 
 </body>
 </html>
