@@ -15,7 +15,7 @@ ul li .publication {
 
 div.publication {
     display: list-item;
-    list-style-type: circle;
+    list--type: circle;
     margin-left:25px;
 }
 
