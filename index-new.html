@@ -16,7 +16,7 @@
   <title>Ittay Eyal</title>
   <link rel="stylesheet" type="text/css" media="screen,print" href="css/style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="css/bootstrap.css" rel="stylesheet" media="screen">
   <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
 </head>
@@ -164,32 +164,27 @@ If you are a <u>registered student</u> be sure to <font color="red">pick a paper
 <h2>Incentives in Blockchains</h2> 
 
 <p> 
-The security of blockchain protocols relies critically on incentives. 
-Anyone can join the system, so blockchains typically require the to expend resources in order to participate using Proof of Work (PoW). 
-They are incentivized to do so with rewards given in cryptocurrency. 
-This process is called mining. 
+The security of blockchain protocols relies critically on incentives, generated as tokens within the system. 
+This allows them to achieve unprecedented guarantees, but opens up questions on security, mechanism design, and performance. 
 </p>
 
-The initial security analysis of blockchain focused on showing it is secure against attackers controlling the majority of mining power. 
-Indeed, Bitcoin's blockchain was considered secure against attackers commanding less than 50% of the mining power. 
-We found that minority miners are in fact better off not following the prescribed strategy but instead following a different strategy we called  <b>Selfish Mining</b>.
+<p>
+<b>Selfish Mining</b> 
+The security threshold for Nakamoto's blockchain is lower than previously thought, as minority miners are incentivized to deviate from the protocol. 
 
-<div class="publication"> 
-<span class="pub_title"><a href="publications/btcProcFC.pdf">Majority is not Enough: Bitcoin Mining is Vulnerable</a></span>. 
-<span class="pub_author">With Emin Gün Sirer</span>
-<br>
-<span class="pub_appear_in">In <span class="pub_venue">the the 18th International Conference on Financial Cryptography and Data Security (FC)</span>, 2014. 
-<span class="pub_misc"><a href="publications/btcProcFC.pdf">[PDF]</a></span> 
-<span class="pub_bibtex"><a href="publications/btcProcFC.bib">[Bibtex]</a></span> 
-</span> 
-</div>
+<a href="publications/btcProcFC.pdf">[FC'14 paper]</a> 
+<a href="publications/btcProcFC.bib">[Bibtex]</a>
+<mark>Blog posts etc.</mark>
+</p>
+
+
 
 <p>
 While Selfish Mining showed that the desired behavior is not a best response, finding the optimal strategy for a given blockchain protocol (e.g., Bitcoin, Ethereum) is another challenge. 
 The natural approach is to solve a Markov Decision Process (MDP), however the reward function is not linear. 
 Previous approaches converged to the solution by solving a series of MDPs. 
 We propose a more efficient solution that solves a single MDP adding a random termination mechanism. 
-<a href="https://https://www.youtube.com/watch?v=P8ESkfCHXZ4"> 
+<a href="https://www.youtube.com/watch?v=P8ESkfCHXZ4"> 
 <i class="fa fa-youtube-play" aria-hidden="true"></i> Roi Bar-Zur at AFT'20</a>
 </p>
 ADD HERE: Links to paper and blog posts. 
