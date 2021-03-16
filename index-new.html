@@ -158,10 +158,17 @@ If you are a <u>registered student</u> be sure to <font color="red">pick a paper
 <h1>Research</h1> 
 
 <p>
-<a href="https://scholar.google.ch/citations?user=1oUGY7cAAAAJ&hl=en&oi=ao">Publications in Google Scholar</a> 
+Publications in
+<a href="https://scholar.google.ch/citations?user=1oUGY7cAAAAJ&hl=en&oi=ao">Google Scholar</a> 
+and 
+<a href="https://dblp.org/pid/86/8318.html">DBLP</a>. 
 </p>
 
-<h2>Incentives in Blockchains</h2> 
+<p>
+Selected projects: 
+</p>
+
+<h2>Blockchain Incentives</h2> 
 
 <p> 
 The security of blockchain protocols relies critically on incentives, generated as tokens within the system. 
@@ -169,258 +176,122 @@ This allows them to achieve unprecedented guarantees, but opens up questions on 
 </p>
 
 <p>
-<b>Selfish Mining</b> 
-The security threshold for Nakamoto's blockchain is lower than previously thought, as minority miners are incentivized to deviate from the protocol. 
+<b>Mutual Assured Destruction HTLC (MAD-HTLC)</b> 
+A new attack threatens the common HTLC primitive that secures various smart contracts including payment channels. 
+A novel alternative utilizes Mutual Assured Destruction (MAD-HTLC) to align participant incentives, utilizing miners as first-class participants. 
+<br>
+<span class="text-muted">With Itay Tsabary, Matan Yehieli and Alex Manuskin. </span>
+<a href="https://ittayeyal.github.io/2020-06-22-mad-htlc/"><b>[post]</b></a> 
+<a href="https://arxiv.org/abs/2006.12031">[arXiv]</a>
+</p>
 
+<p>
+<b>Blockchain Denial of Service (BDoS)</b> 
+First blockchain DoS by a minority attacker (actually much smaller)&nbsp;&ndash; by manipulating incentives. 
+<br>
+<span class="text-muted">With Michael Mirkin, Yan Ji, Jonathan Pang, Ariah Klages-Mundt, and Ari Juels. </span>
+<a href="https://ittayeyal.github.io/2019-12-17-bdos/"><b>[post]</b></a> 
+<a href="https://dl.acm.org/doi/pdf/10.1145/3372297.3417247?casa_token=HjmPj_YosSUAAAAA:RyStS6DwF6PyYcuJIbR7Gnsifj3hMhYb3g9vrKOuOzXUw0QFXsaMijFq7CZ4FRV7y4Ni-D2NE4W7Og">[CCS'20 paper]</a>
+<a href="https://www.youtube.com/watch?v=3xwEaxu2Q9A">[<i class="fa fa-youtube-play" aria-hidden="true"></i> Michael @ CCS'20]</a> 
+</p>
+
+<p>
+<b>Random-Termination Markov Decision Process</b> 
+Efficient MDP analysis of selfish mining strategies by introducing a random-termination edge, resulting in a linear target function. New bound for Ethereum security. 
+<br>
+<span class="text-muted">With Roi Bar-Zur and Aviv Tamar.</span>
+<a href="https://dl.acm.org/doi/pdf/10.1145/3419614.3423264?casa_token=7acVpnN2F6IAAAAA:sHa7Eele8dvRpKAH08z8gpTGIM2dhqHIbSrsaf_n0sz9pNQuv0RqWbIluv8jEUD8c9lpoe8_TPlpFew">[AFT'20 paper]
+<a href="https://www.youtube.com/watch?v=P8ESkfCHXZ4">[<i class="fa fa-youtube-play" aria-hidden="true"></i> Roi @ AFT'20]</a> 
+</p>
+
+<p>
+<b>The Gap Game</b> 
+When a blockchain's minting rate is not large enough, miners switch to intermittent mining sooner rather than later. 
+<br>
+<span class="text-muted">With Itay Tsabary.</span>
+<a href="https://dl.acm.org/doi/pdf/10.1145/3243734.3243737?casa_token=BMhYJlDUEGIAAAAA:ujFeimVBn_DNHUz__riV4i7Es6hsa8dICzdcDFdlhtbaN_CrJ_LqQk2IaFCm36qDemEpYctcceOMPg">[CCS'18 paper]
+<a href="https://www.youtube.com/watch?v=LX5qK9r4Zp4">[<i class="fa fa-youtube-play" aria-hidden="true"></i> Itay @ CCS'18]</a> 
+</p>
+    
+    
+
+<p>
+<b>Selfish Mining</b> The security threshold for Nakamoto's blockchain is lower than previously thought, as minority miners are incentivized to deviate from the protocol.
+<br>
+<span class="text-muted">w/ Emin Gun Sirer</span> 
+<a href="https://hackingdistributed.com/2013/11/04/bitcoin-is-broken/"><b>[HD post '13]</b></a>
+<a href="https://decentralizedthoughts.github.io/2020-02-26-selfish-mining/">[DT post '20]</a>
 <a href="publications/btcProcFC.pdf">[FC'14 paper]</a> 
-<a href="publications/btcProcFC.bib">[Bibtex]</a>
-<mark>Blog posts etc.</mark>
+<a href="https://dl.acm.org/doi/10.1145/3212998">[CACM'18]</a>
 </p>
 
+<h2>Blockchain Performance</h2> 
 
+<p> 
+Proof of Work and similar mechanisms overcome Sybil attacks in open decentralized systems, but introduce new trade-offs. 
+The interaction of second-tier protocols with an underlying blockchain poses novel challenges. 
+</p>
 
 <p>
-While Selfish Mining showed that the desired behavior is not a best response, finding the optimal strategy for a given blockchain protocol (e.g., Bitcoin, Ethereum) is another challenge. 
-The natural approach is to solve a Markov Decision Process (MDP), however the reward function is not linear. 
-Previous approaches converged to the solution by solving a series of MDPs. 
-We propose a more efficient solution that solves a single MDP adding a random termination mechanism. 
-<a href="https://www.youtube.com/watch?v=P8ESkfCHXZ4"> 
-<i class="fa fa-youtube-play" aria-hidden="true"></i> Roi Bar-Zur at AFT'20</a>
+<b>Teechain</b> 
+Payment channels and chains of channels with asynchronous blockchain access using Trusted Execution Environments (Intel SGX). 
+<br>
+<span class="text-muted">With Joshua Lind, Oded Naor, Florian Kelbert, Emin Gün Sirer, and Peter Pietzuch. </span>
+<a href="https://dl.acm.org/doi/pdf/10.1145/3341301.3359627?casa_token=WxpKoG5rsjoAAAAA:KzEJBbNa8e4JFQirax7xY7JbI8J8GF9YReGPZRHDDFVGepbzxurMc3nrldDTGMK48_3HUh0kzfS0Yrc">[SOSP'19 paper]
+<a href="https://sosp19.rcs.uwaterloo.ca/videos/D1-S2-P1.mp4">[<i class="fa fa-youtube-play" aria-hidden="true"></i> Josh @ SOSP'19]</a>
 </p>
-ADD HERE: Links to paper and blog posts. 
 
+<p>
+<b>Ostraka</b> 
+High-throughput blockchain by scaling up: securely parallelizing a Bitcoin node. 
+<br>
+<span class="text-muted">With Alex Manuskin and Michael Mirkin. </span>
+<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9229715">[IEEE S&B'20 paper] 
+<a href="https://www.youtube.com/watch?v=VqOnJCAeF_o">[<i class="fa fa-youtube-play" aria-hidden="true"></i> Alex @ Binary District 2018]</a>
+</p>
+    
+<p>
+<b>Bitcoin-NG</b> 
+High-throughput blockchain with low first-confirmation latency by separating leader election from block proposal. 
+<br>
+<span class="text-muted">With Adem Efe Gencer, Emin Gün Sirer, and Robbert Van Renesse. </span>
+<a href="https://www.usenix.org/system/files/conference/nsdi16/nsdi16-paper-eyal.pdf">[NSDI'16 paper]</a> 
+</p>
+    
+<!--  -->
+<!--  -->
 
+<h2>Proof of Work Sustainability</h2> 
 
+<p>
+Proof of Work overcomes Sybil resistance in an open decentralized system but comes at a significant cost in terms of ecological impact. 
+Can similar security be achieved with a reduced footprint? 
+</p>
 
-
-
-The implications of this phenomena are dangerous, since the revenue of an attacker grows superlinearly with its size. 
-Miners are motivated to join such an attacker, and the attacker is motivated to join other miners, forming a pool with a size that tends towards a majority of the minining power. 
-If such a huge pool forms, the system becomes centralized, losing its basic premise. 
+<p>
+<b>HEB: Hybrid-Expenditure Blockchains</b> 
+Reducing external (physical) PoW expenditure while keeping security against rational attackers. 
+We achieve this while keeping the system decentralized by incentivizing miners to expend tokens on-chain. 
+<br>
+<span class="text-muted">With Itay Tsabary and Alexander Spiegelman. </span>
+<a href="https://arxiv.org/pdf/1911.04124.pdf">[arXiv]</a> 
 </p> 
-
-
-
-
-
-
-
+        
 <p>
-Selected projects: 
-</p>
-
-<h3>Bitcoin-NG</h3> 
-
-<!-- 
-implementations: 
-    Waves (operational) 
-    https://legalthings.one 
-    https://www.cypherium.io/ 
-    https://aeternity.com/ 
-    https://enecuum.com 
-    zcash? 
-    Microsoft? 
--->
-
-<p>
-Blockchain protocols, implementing variants of Bitcoin's blockchain, have an inherent scalability limit. This limit bounds the possibility to improve the user-perceived latency and maximum throughput. 
-The consequence is that one must trade off bandwidth, latency, and security. 
-We present metrics for evaluating blockchain protocols, and measurements from large scale experiments of the Bitcoin core client. 
-</p>
-<p>
-The blockchain promises to become an infrastructure for anonymous online transactions, cheap remittance and smart contracts. 
-To realize this promise in global scale, a blockchain should enable better latency and bandwidth. 
-We present bitcoin-NG, a novel blockchain protocol that allows for bandwidth limited only by the individual nodes' processing power and latency determined by the network's property. 
-</p>
-
-<!--<div class="alert alert-info">
-More about Bitcoin-NG 
-</div>-->
-
-<div class="publication"> 
-<span class="pub_title"><a href="http://arxiv.org/abs/1510.02037">Bitcoin-NG: A Next Generation Blockchain</a></span>. 
-<span class="pub_author">With Adem Efe Gencer, Emin Gün Sirer, and Robbert van Renesse</span> 
-<br> 
-
-<span class="pub_appear_in"><span class="pub_venue">USENIX Symposium on Networked Systems Design and Implementation (NSDI)</span>, 2016. </span> 
-<br> 
-
-<span class="pub_appear_in"><span class="pub_venue">Technical Report</span>, 2015. </span> 
-<span class="pub_misc"><a href="http://arxiv.org/abs/1510.02037">[arXiv]</a></span> 
-<span class="pub_bibtex"><a href="publications/bitcoinNG-TR.bib">[Bibtex]</a></span> 
-<br> 
-
-<span class="pub_appear_in">In <span class="pub_venue">ScalingBitcoin workshop</span>, Montreal, 2015. </span> 
-<span class="pub_misc"><a href="https://www.youtube.com/watch?v=gpJrGuZEJsY&feature=youtu.be&t=2040">[Youtube]</a></span> 
-</div>
-
-<h3>The Miner's Dilemma</h3> 
-
-<p>
-One of the most central threats on the Bitcoin system is centralization, where a small number of entities control the majority of mining power, and can therefore take control of the system. 
-In Bitcoin and most similar cryptocurrencies, small miners tend to form mining pools. 
-On the one hand, this is positive, as pools enable the existance of small miners a
-The largest such entities are open mining pools, where miners join forces to mine together. 
-</p>
-
-<div class="publication"> 
-<span class="pub_title"><a href="publications/btcPoolsSP15.pdf">The Miner's Dilemma</a></span>. 
+<b>REM: Resource-Efficient Mining</b> 
+Using personally-useful work for Proof of Work, enforced by a 2-level hierarchy of TEE enclaves. 
 <br>
-<span class="pub_appear_in">In <span class="pub_venue">the IEEE Symposium on Security and Privacy (Oakland)</span>, 2015. </span> 
-<span class="pub_misc"><a href="publications/btcPoolsSP15.pdf">[PDF]</a></span> 
-<span class="pub_bibtex"><a href="publications/btcPoolsSP15.bib">[Bibtex]</a></span> 
-</div>
+<span class="text-muted">With Fan Zhang, Robert Escriva, Ari Juels, and Robbert van Renesse. </span>
+<a href="https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-zhang.pdf">[USENIX-SECURITY'17 paper]</a> 
+<a href="https://www.youtube.com/watch?v=TX9wfN3sKUo">[<i class="fa fa-youtube-play" aria-hidden="true"></i> Fan @ USENIX-SECURITY'19]</a>
+</p> 
+    
+    
 
-<h3>Distributed Storage Architectures</h3> 
+</br>
+</br>
+</br>
 
-Large scale data stores refrain from supporting consistent transactional operations due to performance concerns. 
-We propose an architecture that utilizes predictable (though inaccurate) object access to improve transaction performance. 
-However, even with perfect backend transactional support, the users of large Internet applications typically access incoherent caches. 
-We present T-Cache, a transaction-aware cache layer. We demonstrate with realistic workloads that T-Cache significantly improves consistency for cache-accessing users. 
-
-<div class="publication"> 
-<span class="pub_title"><a href="publications/txnCacheICDCS15.pdf">Cache Serializability: Reducing Inconsistency in Edge Transactions</a></span>. 
-<span class="pub_author">With Ken Birman and Robbert van Renesse</span> 
-<br>
-<span class="pub_appear_in">In <span class="pub_venue">the IEEE International Conference on Distributed Computing Systems (ICDCS)</span>, 2015. </span> 
-<span class="pub_misc"><a href="publications/txnCacheICDCS15.pdf">[PDF]</a></span> 
-<span class="pub_bibtex"><a href="publications/txnCacheICDCS15.bib">[Bibtex]</a></span> 
-</div>
-
-<div class="publication"> 
-<span class="pub_title"><a href="publications/DC-col51-Sep13.pdf">Fault-Tolerant Transaction Architectures</a></span>. 
-<br>
-<span class="pub_appear_in">In <span class="pub_venue">Distributed Computing Column 51, SIGACT News Volume 44, Number 3</span>, September 2013. </span> 
-<span class="pub_misc"><a href="publications/DC-col51-Sep13.pdf">[PDF]</a></span> 
-<span class="pub_bibtex"><a href="publications/DC-col51-Sep13.bib">[Bibtex]</a></span> 
-</div>
-
-<div class="publication"> 
-<span class="pub_title"><a href="publications/multilogLADIS13.pdf">Ordering Transactions with Prediction in Distributed Object Stores</a></span>. 
-<span class="pub_author">With Ken Birman, Idit Keidar, and Robbert van-Renesse</span> 
-<br>
-<span class="pub_appear_in">In <span class="pub_venue">the 7th Workshop on Large-Scale Distributed Systems and Middleware (LADIS)</span>, 2013. </span> 
-<span class="pub_misc"><a href="publications/multilogLADIS13.pdf">[PDF]</a></span> 
-<span class="pub_bibtex"><a href="publications/multilogLADIS13.bib">[Bibtex]</a></span> 
-<span class="pub_misc"><a href="publications/multilogSOSP13Poster.pdf">[SOSP'15 poster]</a></span> 
-</div>
-
-Key-value stores (KVSs), maintained by external cloud providers are the choice object store of numerous Internet applications. 
-However, KVS cloud providers can and do temporarily fail, and the natural solution is to replicate the object store among multiple providers. 
-However, standard replication techniques do not work in this scenario, due to the limited interface of KVSs. 
-We introduce an algorithm for a KVS replicated among multiple providers, and demonstrate its efficiency with experiments and simulations. 
-
-<div class="publication"> 
-<span class="pub_title"><a href="publications/icDSN12.pdf">Robust Data Sharing with Key-Value Stores</a></span>. 
-<span class="pub_author">With Cristina Basescu, Christian Cachin, Robert Haas,  Alessandro Sorniotti, Marko Vukolic, and Ido Zachevsky</span> 
-<br>
-<span class="pub_appear_in">In <span class="pub_venue">the 42nd annual IEEE/IFIP international conference on Dependable Systems and Networks (DSN)</span>, 2012. </span> 
-<span class="pub_misc"><a href="publications/icDSN12.pdf">[PDF]</a></span> 
-<span class="pub_bibtex"><a href="publications/icDSN12.bib">[Bibtex]</a></span> 
-</div>
-
-<h3>Other Research</h3> 
-
-<div class="publication"> 
-<span class="pub_title"><a href="publications/distributedOptimizationDISC13.pdf">Global Estimation with Local Communication</a></span>. 
-<span class="pub_author">With Idit Keidar, Stacy Patterson and Raphi Rom</span> 
-<br>
-<span class="pub_appear_in">In <span class="pub_venue">the 27th Int'l Symp. on DIStributed Computing (DISC)</span>, 2013. </span> 
-<span class="pub_misc"><a href="publications/distributedOptimizationDISC13.pdf">[PDF]</a></span> 
-<span class="pub_bibtex"><a href="publications/distributedOptimizationDISC13.bib">[Bibtex]</a></span> 
-<br>
-<span class="pub_appear_in">Tech. Rep. CCIT 809, Technion EE, May 2012 - EE Pub. No. 1766.. </span> 
-<span class="pub_misc"><a href="publications/distributedOptimizationTechnical.pdf">[PDF]</a></span> 
-<!--<span class="pub_bibtex"><a href="publications/distributedOptimizationTechnical.bib">[Bibtex]</a></span> -->
-</div>
-
-<div class="publication"> 
-<span class="pub_title"><a href="publications/preallocationHotCloud13.pdf">Thinner Clouds with Preallocation</a></span>. 
-<span class="pub_author">With Flavio Junqueira and Idit Keidar</span> 
-<br>
-<span class="pub_appear_in">In <span class="pub_venue">the 5th UNSENIX Workshop on Hot Topics in Cloud Computing (HotCloud)</span>, 2013. </span> 
-<span class="pub_misc"><a href="publications/preallocationHotCloud13.pdf">[PDF]</a></span> 
-<span class="pub_bibtex"><a href="publications/preallocationHotCloud13.bib">[Bibtex]</a></span> 
-</div>
-
-<div class="publication"> 
-<span class="pub_title"><a href="publications/dynamicAverageAggregationJournal.pdf">LiMoSense - Live Monitoring in Dynamic Sensor Networks</a></span>. 
-<span class="pub_author">With Idit Keidar and Raphi Rom</span> 
-<br>
-<span class="pub_appear_in"><span class="pub_venue">Distributed Computing: Volume 27, Issue 5 (2014), Page 313-328</span>. </span> 
-<span class="pub_misc"><a href="publications/dynamicAverageAggregationJournal.pdf">[PDF]</a></span> 
-<span class="pub_misc"><a href="http://dx.doi.org/10.1007/s00446-014-0213-8">[Springer]</a></span> 
-<span class="pub_bibtex"><a href="publications/dynamicAverageAggregationJournal.bib">[Bibtex]</a></span> 
-<br>
-<span class="pub_appear_in">In <span class="pub_venue">the 7th International Symposium on Algorithms for Sensor Systems, 
-        Weireless Ad Hoc Networks and Autonomous Mobile Entities (ALGOSENSOR)</span>, 2011. </span> 
-<span class="pub_misc"><a href="publications/dynamicAverageAggregationAlgoSensor11.pdf">[PDF]</a></span> 
-<!--<span class="pub_bibtex"><a href="publications/dynamicAverageAggregationAlgoSensor11.bib">[Bibtex]</a></span> -->
-<span class="pub_misc"><a href="publications/dynamicAverageAggregationAlgoSensor11_SLIDES.pdf">[Slides]</a></span> 
-</div>
-
-<div class="publication"> 
-<span class="pub_title">Distributed Data Clustering in Sensor Networks</span> 
-<span class="pub_author">With Idit Keidar and Raphi Rom</span> 
-<br>
-
-    <div class="publication"> 
-    <span class="pub_title"><a href="publications/distributedClusteringDC.pdf">Distributed Data Clustering in Sensor Networks</a></span>. 
-    <span class="pub_appear_in"><span class="pub_venue">Distributed Computing, Volume 24, Issue 5 (2011), pages 207-222</span>. </span> 
-    <span class="pub_misc"><a href="publications/distributedClusteringDC.pdf">[PDF]</a></span> 
-    <span class="pub_misc"><a href="http://link.springer.com/article/10.1007/s00446-011-0143-7">[Springer]</a></span> 
-    <span class="pub_bibtex"><a href="publications/distributedClusteringDC.bib">[Bibtex]</a></span> 
-    </div>
-
-    <div class="publication"> 
-    <span class="pub_title"><a href="publications/distributedClassificationPODC10.pdf">Distributed Data Classification in Sensor Networks</a></span>. 
-    <span class="pub_appear_in">In <span class="pub_venue">the 29th Annual ACM SIGACT-SIGOPS Symposium on Principles of Distributed Computing (PODC)</span>, 2010. </span> 
-    <span class="pub_misc"><a href="publications/distributedClassificationPODC10.pdf">[PDF]</a></span> 
-<!--    <span class="pub_bibtex"><a href="publications/distributedClassificationPODC10.bib">[Bibtex]</a></span> -->
-    </div> 
-
-    <div class="publication"> 
-    <span class="pub_title"><a href="publications/outlierDetectionHotDep09.pdf">Distributed Clustering for Robust Aggregation in Large Networks</a></span>. 
-    <span class="pub_appear_in">In <span class="pub_venue">the 5th Workshop on Hot Topics in System Dependability (HotDep)</span>, 2009. </span> 
-    <span class="pub_misc"><a href="publications/outlierDetectionHotDep09.pdf">[PDF]</a></span> 
-<!--    <span class="pub_bibtex"><a href="publications/outlierDetectionHotDep09.bib">[Bibtex]</a></span> -->
-    </div>
-
-    </div>
-
-<!--<div class="page-header">
-<h2 id="spf">Program Committees (upcoming)</h2>
-</div>
-
-<!--<div class="alert alert alert-success">
-<p class="text-center">
-Deadlines of 
-<a href="http://www.ieee-security.org/TC/SP2016/cfpapers.html">Oakland</a>, 
-<a href="http://fc16.ifca.ai/bitcoin/cfp.html">Bitcoin</a>, 
-and 
-<a href="http://www.podc.org/podc2016/call-for-papers/">PODC</a> 
-are coming up. 
-<p>
-</div>-->
-
-<!--<ul class="list">
-<li>
-<strike><a href="http://www.ieee-security.org/TC/SP2016/cfpapers.html">Oakland 2016</a></strike>
-</li><li>
-<strike><a href="http://fc16.ifca.ai/bitcoin/cfp.html">Bitcoin 2016</a> (alongside FC'16)</strike> 
-</li><li>
-<strike><a href="http://www.podc.org/podc2016/call-for-papers/">PODC 2016</a></strike>
-</li><li>
-<strike><a href="http://2016.discotec.org/index.php?MG=20&Mid=6&sub1=1">DAIS 2016</a></strike>
-</li><li>
-<strike><a href="http://atc2016.sciencesconf.org/resource/page/id/1">IEEE ATC 2016</a></strike> 
-</li>
-</ul>
-
-</div> <!--container-->
-
-<br />
-<br />
 
 <div class="attribution"> 
 Theme by <a href="http://getbootstrap.com/">Bootstrap</a>, under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">MIT licenses</a>
@@ -430,7 +301,7 @@ Theme by <a href="http://getbootstrap.com/">Bootstrap</a>, under <a href="https:
 Twitter icon by <a href="http://www.elegantthemes.com" title="Elegant Themes">Elegant Themes</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>
 </div>
 
-<div>Youtube icons by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+<div class="attribution">Youtube icons by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
  
 </body>
