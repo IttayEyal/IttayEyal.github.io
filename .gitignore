@@ -1,2 +1,5 @@
+.gitignore
 .directory
 */.directory
+upload.sh
+
