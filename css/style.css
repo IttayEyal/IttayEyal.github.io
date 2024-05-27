@@ -79,3 +79,14 @@ left: 0;
 width: 100%;
 height: 100%;
 }
+
+.highlight {
+    background-color: yellow;
+    color: red; /* Ensure text is readable against the red background */
+    padding: 0 4px; /* Optional: add some padding for a marker effect */
+    border-radius: 2px; /* Optional: add rounded corners */
+}
+
+.hidden {
+    display: none;
+}

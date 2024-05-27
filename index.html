@@ -114,9 +114,13 @@ I completed my Ph.D. in 2013 at the Technion's Electrical Engineering (today ECE
 
 <div class="alert alert-info">
 <p class="text-center">
-<ul>
-    <li> <a href="https://aftconf.github.io/">The Conference on Advances in Financial Technologies (AFT)</a>. 
-    <li> Mailing list for Technion/Haifa events and announcements on blockchains, cryptocurrencies, and smart contracts.  <a href="http://listserv.technion.ac.il/cgi-bin/wa?SUBED1=EE-BLOCKCHAIN-L&A=1">Subscribe here</a>. 
+<ul id="dynamic-list">
+    <li data-end-date="2024-06-30"><a href="#interactiveAuth">Interactive Authentication</a> accepted for publication in CCS'24. <new-label data-end-date="2024-06-30"></new-label> </li>
+    <li data-end-date="2024-06-30"><a href="#asyncAuth">Asynchronous Authentication</a> accepted for publication in CCS'24. <new-label data-end-date="2024-06-30"></new-label> </li>
+    <li data-end-date="2024-06-30"><a href="#sprints">Sprints</a> accepted for publication in USENIX'24. <new-label data-end-date="2024-06-30"></new-label> </li>
+    
+    <li> <a href="https://aftconf.github.io/">The Conference on Advances in Financial Technologies (AFT)</a>.</li> 
+    <li> Mailing list for Technion/Haifa events and announcements on blockchains, cryptocurrencies, and smart contracts.  <a href="http://listserv.technion.ac.il/cgi-bin/wa?SUBED1=EE-BLOCKCHAIN-L&A=1">Subscribe here</a>.</li> 
 </ul>
 </p>
 </div>
@@ -203,37 +207,40 @@ Nonetheless, authentication in large-scale systems and in decentralized systems 
 <a href="https://www.youtube.com/watch?v=h2FZrXPckoo">[<i class="fa fa-youtube-play" aria-hidden="true"></i> Avalanche Summit II]</a> 
 </p>
 
+<p id="asyncAuth">
+    <b>Asynchronous Authentication</b> 
+    If the network between the user and authenticator is asynchronous, every mechanism is dominated by one defined with a monotonic Boolean function. A greedy algorithm can approximate optimal mechanisms based on scenario probability. 
+    <br>
+    <span class="text-muted">With Marwa Mouallem.</span>
+    <a href="https://arxiv.org/pdf/2312.13967.pdf">[tech report '23]</a>
+    To be published in CCS'24
+    <new-label data-end-date="2024-06-30"></new-label>
+</p>      
+
+<p id="interactiveAuth">
+    <b>Interactive Authentication</b> 
+    Interactive authentication mechanisms offer superior security compared to one-shot methods, with provable bounds and maximal mechanisms improving widely-used systems.
+    <br>
+    <span class="text-muted">With Deepak Maram and Mahimna Kelkar.</span>
+    <a href="https://eprint.iacr.org/2022/1682.pdf">[tech report '23]</a>
+    To be published in CCS'24
+    <new-label data-end-date="2024-06-30"></new-label>
+</p>
+
 <p>
 <b>Wallet Design</b> 
-We define the faults keys suffer (loss, leak, theft), formulate cryptocurrency wallets as monotone boolean functions, and search for optimal wallets. 
-We use exhaustive search where possible and heuristic approaches otherwise, revealing surprising behavior. 
-<br>
-<a href="https://techdecsec.github.io/2021-11-16-keyManagement/"><b>[post]</b></a> 
-<a href="https://drops.dagstuhl.de/opus/volltexte/2022/15901/pdf/OASIcs-Tokenomics-2021-4.pdf">[Tokenomics'21]</a> 
-<br>
-<b>Wallet designer app</b>: 
-Find optimal wallet and deploy directly with Metamask. 
-(First place in the 2022 IC3 Blockchain Camp hackathon)
-<a href="https://crypto-wallet-designer.github.io/crypto-key-calculator/"><b>[Ethereum Wallet Designer]</b></a> 
+    We define the faults keys suffer (loss, leak, theft), formulate cryptocurrency wallets as monotone boolean functions, and search for optimal wallets. 
+    We use exhaustive search where possible and heuristic approaches otherwise, revealing surprising behavior. 
+    <br>
+    <a href="https://techdecsec.github.io/2021-11-16-keyManagement/"><b>[post]</b></a> 
+    <a href="https://drops.dagstuhl.de/opus/volltexte/2022/15901/pdf/OASIcs-Tokenomics-2021-4.pdf">[Tokenomics'21]</a> 
+    <br>
+    <b>Wallet designer app</b>: 
+    Find optimal wallet and deploy directly with Metamask. 
+    (First place in the 2022 IC3 Blockchain Camp hackathon)
+    <a href="https://crypto-wallet-designer.github.io/crypto-key-calculator/"><b>[Ethereum Wallet Designer]</b></a> 
 </p>
 
-<p>
-<b>Interactive Authentication</b> 
-Interactive authentication mechanisms offer superior security compared to one-shot methods, with provable bounds and maximal mechanisms improving widely-used systems.
-<br>
-<span class="text-muted">With Deepak Maram and Mahimna Kelkar.</span>
-<a href="https://eprint.iacr.org/2022/1682.pdf">[tech report '23]</a>
-</p>
-
-<p>
-<b>Asynchronous Authentication</b> 
-If the network between the user and authenticator is asynchronous, every mechanism is dominated by one defined with a monotonic Boolean function. A greedy algorithm can approximate optimal mechanisms based on scenario probability. 
-<br>
-<span class="text-muted">With Marwa Mouallem.</span>
-<a href="https://arxiv.org/pdf/2312.13967.pdf">[tech report '23]</a>
-</p>
-
-    
 <h2>Blockchain Incentives</h2> 
 
 <p> 
@@ -347,6 +354,16 @@ Proof of Work overcomes Sybil resistance in an open decentralized system but com
 Can similar security be achieved with a reduced footprint? 
 </p>
 
+<p id="sprints">
+<b>Sprints: Intermittent Blockchain PoW Mining</b> 
+Achieve (almost) pure-Proof-of-Work security by intermittently mining. Enforced with Proof-of-Delay (locally computed, think VDF) before each block's PoW. 
+<br>
+<span class="text-muted">With Michael Mirkin, Lulu Zhou, and Fan Zhang. </span>
+<a href="https://eprint.iacr.org/2023/626">[ePrint]</a> 
+To be published in USENIX'24<new-label data-end-date="2024-06-30"></new-label>
+</p> 
+    
+
 <p>
 <b>HEB: Hybrid-Expenditure Blockchains</b> 
 Reducing external (physical) PoW expenditure while keeping security against rational attackers. 
@@ -354,6 +371,7 @@ We achieve this while keeping the system decentralized by incentivizing miners t
 <br>
 <span class="text-muted">With Itay Tsabary and Alexander Spiegelman. </span>
 <a href="https://arxiv.org/pdf/1911.04124.pdf">[arXiv]</a> 
+<a href="https://www.blockchain-polytechnique.com/wp-content/uploads/2022/12/Working-Paper-Proceedings-Tokenomics-2021.pdf#page=29">[Tokenomics'21]</a>
 </p> 
         
 <p>
@@ -383,5 +401,7 @@ Twitter icon by <a href="http://www.elegantthemes.com" title="Elegant Themes">El
 <div class="attribution">Youtube icons by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
  
+<script src="newLabel.js"></script>
+<!-- <script src="scripts.js"></script> -->
 </body>
 </html>
