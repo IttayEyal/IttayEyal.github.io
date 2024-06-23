@@ -1,79 +1,90 @@
 div {
-  width: auto;
-  display: inline-block;
-  user-select: none; 
-  /* text-align: center; */
-}
-
-*{padding:0;margin:0;} 
-
-/*@keyframes glowing {
-0% { background-color: #2ba805; box-shadow: 0 0 3px #2ba805; }
-50% { background-color: #49e819; box-shadow: 0 0 10px #49e819; }
-100% { background-color: #2ba805; box-shadow: 0 0 3px #2ba805; }
-}*/
-
-@keyframes glowing {
-0% { background-color: #000000; }
-100% { background-color: #ffffff; }
-}
-
-.floatPlus{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-	position:fixed;
-	width:80px;
-	height:80px;
-	bottom:40px;
-	left:40px;
-	background-color:#0C9;
-	color:#FFF;
-	border-radius:100px;
-	text-align:center;
-	line-height: 120px;
-    box-shadow: 2px 2px 3px #999;
-    font-size: 50px;
-    z-index: 9999;
-    user-select: none; 
-}
-
-.floatMinus{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-	position:fixed;
-	width:80px;
-	height:80px;
-	bottom:40px;
-	left:140px;
-	background-color:#0C9;
-	color:#FFF;
-	border-radius:100px;
-	text-align:center;
-	line-height: 120px;
-	box-shadow: 2px 2px 3px #999;
-    font-size: 50px;
-    z-index: 9999;
-    user-select: none; 
-}
-
-.floatBlink{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-	position:fixed;
-	width:80px;
-	height:80px;
-	bottom:40px;
-	right:40px;
-	background-color:#F00;
-	color:#FFF;
-	border-radius:100px;
-	text-align:center;
-	line-height: 120px;
-	box-shadow: 2px 2px 3px #999;
-    font-size: 50px;
-    z-index: 9999;
-    user-select: none; 
-} 
+	width: auto;
+	display: inline-block;
+	user-select: none;
+	/* background-color: #999; */
+	padding: 0 20px;
+	position: absolute; /* Use absolute positioning */
+	top: 50%; /* Center vertically */
+	left: 50%; /* Center horizontally */
+	transform: translate(-50%, -50%); /* Offset to truly center the div */
+	line-height: 0;
+  }
+  
+  * {
+	padding: 0;
+	margin: 0;
+  }
+  
+  @keyframes glowing {
+	0% { background-color: #000000; }
+	100% { background-color: #ffffff; }
+  }
+  
+  .floatPlus {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  position: fixed;
+	  width: 80px;
+	  height: 80px;
+	  bottom: 40px;
+	  left: 40px;
+	  background-color: #0C9;
+	  color: #FFF;
+	  border-radius: 100px;
+	  text-align: center;
+	  line-height: 120px;
+	  box-shadow: 2px 2px 3px #999;
+	  font-size: 50px;
+	  z-index: 9999;
+	  user-select: none;
+  }
+  
+  .floatMinus {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  position: fixed;
+	  width: 80px;
+	  height: 80px;
+	  bottom: 40px;
+	  left: 140px;
+	  background-color: #0C9;
+	  color: #FFF;
+	  border-radius: 100px;
+	  text-align: center;
+	  line-height: 120px;
+	  box-shadow: 2px 2px 3px #999;
+	  font-size: 50px;
+	  z-index: 9999;
+	  user-select: none;
+  }
+  
+  .floatBlink {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  position: fixed;
+	  width: 80px;
+	  height: 80px;
+	  bottom: 40px;
+	  right: 40px;
+	  background-color: #F00;
+	  color: #FFF;
+	  border-radius: 100px;
+	  text-align: center;
+	  line-height: 120px;
+	  box-shadow: 2px 2px 3px #999;
+	  font-size: 50px;
+	  z-index: 9999;
+	  user-select: none;
+  }
+  
+  #shown {
+	line-height: 1; /* Ensure line height is normal */
+	margin: 0; /* Remove any margin */
+	padding: 0; /* Remove any padding */
+	vertical-align: middle; /* Vertically align text to middle */
+  }
+  
