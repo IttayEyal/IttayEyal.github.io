@@ -4,6 +4,7 @@ var elemPlus = document.getElementById('plus');
 var elemMinus = document.getElementById('minus');
 
 var counter = 10; 
+elemDiv.innerHTML = counter; 
 
 // elemPlus.onclick = function() {
 //     counter += 1; 
@@ -59,6 +60,12 @@ function fitSize() {
 //  document.getElementById("shown").innerHTML = 5+1 + "px";
 //  document.getElementById("hidden").innerHTML = "stam";
 }
+
+// Run fitSize at initialization
+fitSize();
+
+// Run fitSize whenever the window is resized
+window.addEventListener('resize', fitSize);
 
 // var buttonBlink = document.createElement("Button");
 // buttonBlink.innerHTML = "blink";
