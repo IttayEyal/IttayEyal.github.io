@@ -57,7 +57,7 @@
 
 <div class="col-sm-3"> 
 <br>
-<img class="img-responsive" style="max-height:250px;" src="img/sitePic.jpg" alt="photo" height="250"/>
+<img class="img-responsive img-circle" style="max-height:250px; width: 250px; object-fit: cover;" src="img/sitePic.jpg" alt="photo"/>
 </div> <!--col-->
 
 <div class="col-sm-9">
@@ -112,12 +112,24 @@ I completed my Ph.D. in 2013 at the Technion's Electrical Engineering (today ECE
 </p>
 </div>
 
+<!-- Add the table of contents here -->
+<div class="toc">
+    <p><a href="#teaching">Teaching</a> • <a href="#group">Group</a> • <a href="#research">Research</a></p>
+<!-- </div>
+<div class="toc"> -->
+    <strong>Topics:</strong>
+    <a href="#authentication">Authentication</a> • 
+    <a href="#blockchain-incentives">Blockchain Incentives</a> • 
+    <a href="#blockchain-performance">Blockchain Performance</a> • 
+    <a href="#proof-of-work-sustainability">Proof of Work Sustainability</a>
+</div>
+
 <div class="alert alert-info">
 <p class="text-center">
 <ul id="dynamic-list">
     <li data-end-date="2024-06-30"><a href="#interactiveAuth">Interactive Authentication</a> accepted for publication in CCS'24. <new-label data-end-date="2024-06-30"></new-label> </li>
     <li data-end-date="2024-06-30"><a href="#asyncAuth">Asynchronous Authentication</a> accepted for publication in CCS'24. <new-label data-end-date="2024-06-30"></new-label> </li>
-    <li data-end-date="2024-06-30"><a href="#sprints">Sprints</a> accepted for publication in USENIX'24. <new-label data-end-date="2024-06-30"></new-label> </li>
+    <li data-end-date="2024-06-30"><a href="#sprints">Sprints</a> presented in USENIX'24. <new-label data-end-date="2024-06-30"></new-label> </li>
     
     <li> <a href="https://aftconf.github.io/">The Conference on Advances in Financial Technologies (AFT)</a>.</li> 
     <li> Mailing list for Technion/Haifa events and announcements on blockchains, cryptocurrencies, and smart contracts.  <a href="http://listserv.technion.ac.il/cgi-bin/wa?SUBED1=EE-BLOCKCHAIN-L&A=1">Subscribe here</a>.</li> 
@@ -125,7 +137,7 @@ I completed my Ph.D. in 2013 at the Technion's Electrical Engineering (today ECE
 </p>
 </div>
 
-<h2>Teaching</h2> 
+<h2 id="teaching">Teaching</h2> 
 
 <p> 
 <ul>
@@ -160,7 +172,7 @@ If you are a <u>registered student or just sitting in</u>, be sure to <font colo
 If you are a <u>registered student</u> be sure to <font color="red">pick a paper and a date (first come first served). </font>[<a href="https://thinfi.com/1107">list</a> (password: technion)]-->
 </p> 
 
-<h2>Group</h2> 
+<h2 id="group">Group</h2> 
 
 <p> 
 <ul>
@@ -185,7 +197,7 @@ If you are a <u>registered student</u> be sure to <font color="red">pick a paper
 </p> 
 
  
-<h1>Research</h1> 
+<h1 id="research">Research</h1> 
 
 <p>
 Publications in
@@ -198,7 +210,7 @@ and
 Selected projects: 
 </p>
 
-<h2>Authentication</h2> 
+<h2 id="authentication">Authentication</h2> 
 
 <p> 
 Human-machine authentication, the binding of a principal to a digital identity, stands at the basis of security analysis and design and its various aspects are actively studied.
@@ -240,7 +252,7 @@ Nonetheless, authentication in large-scale systems and in decentralized systems 
     <a href="https://crypto-wallet-designer.github.io/crypto-key-calculator/"><b>[Ethereum Wallet Designer]</b></a> 
 </p>
 
-<h2>Blockchain Incentives</h2> 
+<h2 id="blockchain-incentives">Blockchain Incentives</h2> 
 
 <p> 
 The security of blockchain protocols relies critically on incentives, generated as tokens within the system. 
@@ -310,7 +322,7 @@ When a blockchain's minting rate is not large enough, miners switch to intermitt
 <a href="https://dl.acm.org/doi/10.1145/3212998">[CACM'18]</a>
 </p>
 
-<h2>Blockchain Performance</h2> 
+<h2 id="blockchain-performance">Blockchain Performance</h2> 
 
 <p>
 <b>SAMM: Sharded Automatic Market Maker</b> 
@@ -350,7 +362,7 @@ High-throughput blockchain with low first-confirmation latency by separating lea
 <!--  -->
 <!--  -->
 
-<h2>Proof of Work Sustainability</h2> 
+<h2 id="proof-of-work-sustainability">Proof of Work Sustainability</h2> 
 
 <p>
 Proof of Work overcomes Sybil resistance in an open decentralized system but comes at a significant cost in terms of ecological impact. 
@@ -362,8 +374,7 @@ Can similar security be achieved with a reduced footprint?
 Achieve (almost) pure-Proof-of-Work security by intermittently mining. Enforced with Proof-of-Delay (locally computed, think VDF) before each block's PoW. 
 <br>
 <span class="text-muted">With Michael Mirkin, Lulu Zhou, and Fan Zhang. </span>
-<a href="https://eprint.iacr.org/2023/626">[ePrint]</a> 
-To be published in USENIX'24<new-label data-end-date="2024-06-30"></new-label>
+<a href="https://www.usenix.org/system/files/usenixsecurity24-mirkin.pdf">[USENIX Security'24]</a> 
 </p> 
     
 
@@ -383,7 +394,7 @@ Using personally-useful work for Proof of Work, enforced by a 2-level hierarchy 
 <br>
 <span class="text-muted">With Fan Zhang, Robert Escriva, Ari Juels, and Robbert van Renesse. </span>
 <a href="https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-zhang.pdf">[USENIX-SECURITY'17]</a> 
-<a href="https://www.youtube.com/watch?v=TX9wfN3sKUo">[<i class="fa fa-youtube-play" aria-hidden="true"></i> Fan @ USENIX-SECURITY'17]</a>
+<a href="https://www.youtube.com/watch?v=TX9wfN3sKUo">[<i class="fa fa-youtube-play" aria-hidden="true"></i> Fan @ USENIX-Security'17]</a>
 </p> 
     
     

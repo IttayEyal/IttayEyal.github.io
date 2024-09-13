@@ -90,3 +90,43 @@ height: 100%;
 .hidden {
     display: none;
 }
+
+.toc {
+    margin: 10px 0;
+    padding: 5px 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.toc p {
+    margin: 0;
+    padding: 0;
+}
+
+.toc a {
+    display: inline-block;
+    margin: 0 10px;
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.toc a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .toc {
+        text-align: left;
+    }
+    
+    .toc a {
+        display: inline-block;
+        margin: 5px 10px 5px 0;
+    }
+}
+
+.img-circle {
+    border-radius: 50%;
+}
