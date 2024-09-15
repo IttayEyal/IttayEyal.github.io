@@ -98,6 +98,11 @@ height: 100%;
     font-size: 0.9em;
 }
 
+.toc > * {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 .toc p {
     margin: 0;
     padding: 0;
