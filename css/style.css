@@ -1,3 +1,7 @@
+.grayed {
+    color: gray;
+}
+
 div.attribution {
     text-align: center; 
     font-size: 70%;
