@@ -139,3 +139,54 @@ height: 100%;
 .img-circle {
     border-radius: 50%;
 }
+
+
+
+
+
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.text-content {
+    flex: 1 1 auto; /* Ensure text takes priority */
+    min-width: 300px; /* Prevent text from becoming too narrow */
+}
+
+.group-photo-wrapper {
+    flex: 0 1 auto; /* Allow the image wrapper to shrink or grow */
+    max-width: 40%; /* Limit wrapper width */
+}
+
+.group-photo-wrapper a {
+    display: inline-block; /* Prevent the <a> tag from behaving like a block */
+}
+
+.group-photo {
+    width: 100%; /* Ensure the image fills the wrapper */
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.2s ease; /* Add a hover effect */
+}
+
+/* Hover effect for the image */
+.group-photo:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+
+    .group-photo-wrapper {
+        max-width: 100%;
+    }
+}
