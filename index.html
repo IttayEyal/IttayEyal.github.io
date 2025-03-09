@@ -197,9 +197,7 @@ If you are a <u>registered student</u> be sure to <font color="red">pick a paper
         </ul>
     </div>
     <div class="group-photo-wrapper">
-        <a href="img/2025-01-00 group engelberg.jpg">
-            <img src="img/2025-01-00 group engelberg.jpg" alt="Group Photo Engelberg" class="group-photo">
-        </a>
+        <img src="img/2025-01-00 group engelberg.jpg" alt="Group Photo Engelberg" class="group-photo" onclick="toggleImage(this)">
     </div>
 </div>
 
@@ -422,5 +420,40 @@ Twitter icon by <a href="http://www.elegantthemes.com" title="Elegant Themes">El
  
 <script src="newLabel.js"></script>
 <!-- <script src="scripts.js"></script> -->
+
+<script>
+function toggleImage(img) {
+    if (img.classList.contains('fullscreen')) {
+        // If image is fullscreen, remove the fullscreen class
+        img.classList.remove('fullscreen');
+        document.body.style.overflow = 'auto'; // Re-enable scrolling
+    } else {
+        // If image is not fullscreen, add the fullscreen class
+        img.classList.add('fullscreen');
+        document.body.style.overflow = 'hidden'; // Disable scrolling when fullscreen
+    }
+}
+</script>
+
+<style>
+.group-photo {
+    max-width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    margin: 0;
+    padding: 0;
+}
+</style>
 </body>
 </html>
