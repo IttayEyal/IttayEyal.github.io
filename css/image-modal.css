@@ -1,0 +1,18 @@
+.group-photo {
+    max-width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    margin: 0;
+    padding: 0;
+} 
