@@ -13,6 +13,12 @@ div.contact {
     font-size: 100%;
 } 
 
+.research-title {
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 0.5em;
+}
+
 ul li .publication {
     margin-bottom:0px;
 }
