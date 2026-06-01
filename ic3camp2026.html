@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>IC3 Blockchain Camp 2026 Agenda</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f2;
+      --ink: #161815;
+      --muted: #60645d;
+      --line: #d7dbd0;
+      --panel: #ffffff;
+      --accent: #0f766e;
+      --accent-soft: #d8f3ee;
+      --now: #d03a2f;
+      --past: #858a80;
+      --shadow: 0 1px 3px rgba(22, 24, 21, .12);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      min-height: 100%;
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      min-height: 100%;
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+    }
+
+    button {
+      color: inherit;
+      font: inherit;
+    }
+
+    .app {
+      width: 100vw;
+      min-height: 100vh;
+      padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(246, 247, 242, .96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      padding: 12px 12px 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.15;
+      font-weight: 780;
+      letter-spacing: 0;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 72px;
+      padding: 6px 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 6px;
+      width: 100%;
+      overflow-x: auto;
+      padding: 0 8px 10px;
+      scrollbar-width: none;
+    }
+
+    .tabs::-webkit-scrollbar { display: none; }
+
+    .tab {
+      flex: 0 0 auto;
+      min-width: 54px;
+      padding: 8px 9px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .tab.is-active {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: #063b37;
+    }
+
+    .agenda {
+      width: 100vw;
+    }
+
+    .day {
+      width: 100vw;
+      padding-top: 12px;
+      scroll-margin-top: 108px;
+    }
+
+    .day-heading {
+      width: 100%;
+      padding: 0 12px 8px;
+    }
+
+    .day-title {
+      margin: 0;
+      font-size: 21px;
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .day-meta {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.3;
+    }
+
+    .event {
+      position: relative;
+      width: 100vw;
+      min-height: 72px;
+      padding: 10px 10px 10px 12px;
+      border-top: 1px solid var(--line);
+      background: var(--panel);
+      scroll-margin-top: 116px;
+    }
+
+    .event:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .event.is-past {
+      color: var(--past);
+      background: #fafbf7;
+    }
+
+    .event.is-now {
+      background: #fffdfa;
+      box-shadow: inset 4px 0 0 var(--now);
+    }
+
+    .event.is-next {
+      box-shadow: inset 4px 0 0 var(--accent);
+    }
+
+    .content {
+      min-width: 0;
+    }
+
+    .name-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .name {
+      min-width: 0;
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 780;
+      overflow-wrap: anywhere;
+    }
+
+    .pill {
+      flex: 0 0 auto;
+      max-width: 88px;
+      padding: 4px 6px;
+      border-radius: 7px;
+      background: var(--accent-soft);
+      color: #063b37;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .pill-session { background: #dbeafe; color: #1e3a8a; }
+    .pill-meal { background: #fee2b8; color: #78350f; }
+    .pill-hack { background: #dcfce7; color: #14532d; }
+    .pill-break { background: #e7e5e4; color: #44403c; }
+    .pill-outing { background: #fce7f3; color: #831843; }
+    .pill-talks { background: #ede9fe; color: #4c1d95; }
+
+    .event.is-now .pill {
+      background: #ffe4df;
+      color: #842117;
+    }
+
+    .session-time {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.25;
+      font-weight: 720;
+      white-space: normal;
+    }
+
+    .event.is-now .session-time { color: var(--now); }
+
+    .place {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.28;
+      overflow-wrap: anywhere;
+    }
+
+    .talks {
+      display: grid;
+      gap: 6px;
+      margin-top: 9px;
+    }
+
+    .talk {
+      display: grid;
+      grid-template-columns: 18px minmax(0, 1fr);
+      gap: 5px;
+      padding: 7px 8px;
+      border: 1px solid #e6e9e0;
+      border-radius: 8px;
+      background: #fbfcf9;
+      font-size: 13px;
+      line-height: 1.28;
+    }
+
+    .talk-mark {
+      color: var(--accent);
+      font-size: 12px;
+      line-height: 1.3;
+      text-align: center;
+    }
+
+    .progress-track {
+      position: absolute;
+      left: 4px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: #e4e7de;
+    }
+
+    .event.is-past .progress-track { background: var(--accent); }
+
+    .progress-fill {
+      position: absolute;
+      left: 4px;
+      top: 0;
+      width: 3px;
+      height: 0;
+      background: var(--now);
+    }
+
+    .now-marker {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--now);
+      box-shadow: 0 0 0 1px rgba(208, 58, 47, .18);
+    }
+
+    .now-marker::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: -5px;
+      width: 12px;
+      height: 12px;
+      border: 2px solid var(--panel);
+      border-radius: 50%;
+      background: var(--now);
+      box-shadow: 0 1px 3px rgba(22, 24, 21, .22);
+    }
+
+    .empty {
+      width: 100%;
+      padding: 24px 12px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .footer {
+      width: 100vw;
+      padding: 20px 12px 28px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .footer a {
+      color: var(--accent);
+      font-weight: 760;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    @media (min-width: 720px) {
+      .app,
+      .agenda,
+      .day,
+      .event,
+      .footer {
+        width: min(100vw, 820px);
+        margin-inline: auto;
+      }
+
+      .event {
+        padding-right: 14px;
+      }
+
+      .title,
+      .tabs,
+      .day-heading {
+        width: min(100vw, 820px);
+        margin-inline: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="title">
+        <h1>IC3 Camp Agenda</h1>
+        <div class="status" id="status">Loading</div>
+      </div>
+      <nav class="tabs" id="tabs" aria-label="Agenda days"></nav>
+    </header>
+    <section class="agenda" id="agenda" aria-live="polite"></section>
+    <footer class="footer">
+      <a href="mailto:ittay@technion.ac.il?subject=IC3%20Camp%20Agenda%20comments">Comments or suggestions</a>
+    </footer>
+  </main>
+
+  <script>
+    const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRtJKFC4vV3uyMLIN2d9KtCiIjGLjTLexZJDgaFRQftXjfUUpy5eJt6zh0mK-C0_x-WKaK3kh9iabeE/pub?output=csv";
+    const EVENT_YEAR = 2026;
+    const ET_OFFSET = "-04:00";
+
+    const FALLBACK_CSV = `,,,
+,IC3 2026 Blockchain Camp Agenda,,
+,"Monday - June 1, 2026 ~ Kickoff ~
+Chair: Surya Bakshi",,
+,8:30 - 9:30am,Breakfast,Andlinger - Maeder Hall Lobby
+,9:30 - 11:00am,Session I (90 minutes),Andlinger - Maeder Hall Auditorium
+,,"◔ 1. Prof. Ittay Eyal (Technion, IC3) - ""Introduction to the 2026 Camp""",
+,,"◑ 2. Prof. Matt Weinberg (Princeton University) - ""Analyzing the Economic Impact of Decentralization on Users""",
+,,"◔ 3. Alexander Kropiunig (Complexity Science Hub) - ""Crypto's Social Oracle Problem""",
+,,"◔ 4. Takudzwa Tarutira (CMU) & Isabel Agadagba (CMU) - ""A Cross-Country Evaluation of Sentiment Toward Digital Payment Systems in Africa""",
+,,"◔ 5. Shyam Sridhar (Ethereum Foundation) - ""Updates from the Ethereum Foundation's Academic Secretariat""",
+,11:00 - 11:30am ,Break (30 minutes),Andlinger - Maeder Hall Lobby
+,11:30am - 1:00pm,Session II (90 minutes),Andlinger - Maeder Hall Auditorium
+,,"◑ 1. Quintus Kilbourn (Flashbots) - ""Ethereum’s Execution Pipeline in 2026""",
+,,"◔ 2. Rithwik Kerur (UCSB fftech research lab) - ""P-IDA: Information Dispersal with Post Dissemination Pruning""",
+,,"◔ 3. Christopher Blair (Princeton University) - ""Decentralized Solutions for Humanitarian and Development Challenges""",
+,,"◑ 4. Prof. Jiasun Li (George Mason University) - ""Proof of Work and Carbon Reduction""",
+,1:00 - 2:00pm,Lunch ~Masa Sushi~,Andlinger - Maeder Hall Lobby
+,2:00 - 3:00pm,Session III - Project Intros & Team Selection,Andlinger - Maeder Hall Auditorium
+,3:00 - 6:00pm ,Allocated time for the hackathon (All Breakout Rooms),"Friend Center - 108, 110, 111, 112, 114"
+,6:00 - 8:00pm,Opening Reception,Graduate Hotel
+,,,
+,"Tuesday - June 2, 2026 ~Finance & Regulation ~
+Chair: Jim Ballingall",,
+,8:30 - 10:30am,Breakfast,Andlinger - Maeder Hall Lobby
+,10:30 - 11:30am,Session I (60 minutes),Andlinger - Maeder Hall Auditorium
+,,"◑ 1. Prof. James Grimmelmann (Cornell University) - ""Digital, Financial, and Crypto Property"" ",
+,,"◑ 2. Prof. Carla Reyes (SMU Dedman) - ""Crypto, National Security & Implications for Protocol Governance""",
+,11:30am - 12:00pm,Break (30 minutes),Andlinger - Maeder Hall Lobby
+,12:00 - 1:00pm,Session II (60 minutes),Andlinger - Maeder Hall Auditorium
+,,◑ 1. Christine Moy (Apollo),
+,,"◑ 2. John Wu (Ava Labs) - ""Tokenization, the Change of Guard from Retail to Institutional""",
+,1:00 - 2:00pm,Lunch ~Tacoria~,Andlinger - Maeder Hall Lobby
+,2:00 - 3:00pm,Session III (60 minutes),Andlinger - Maeder Hall Auditorium
+,,◔ 1. Commissioner Hester Pierce (SEC) - Intro Remarks,
+,,"◕ 2. Fireside Chat w/ Commissioner Hester Peirce (SEC)
+       Moderator: Professor Carla Reyes (SMU Dedman School of Law)",
+,3:00 - 8:30pm,Allocated time for the hackathon (All Breakout Rooms),"Friend Center - 108, 110, 111, 112, 114"
+,,On your own for dinner,
+,,,
+,"Wednesday - June 3, 2026 ~ Cryptography, TEEs/ZK, and Privacy ~
+Chair: Lorenz Breidenbach",,
+,8:30 - 9:30am,Breakfast,Andlinger - Maeder Hall Lobby
+,9:30 - 11:00am,Session I (90 minutes),Andlinger - Maeder Hall Auditorium
+,,"◑ 1. Sourav Das (Category Labs) - ""Cryptocurrency-Backed Trustless Anonymous Tokens and Their Applications""",
+,,"◑ 2. Nico Serrano (Privacy Stewards of Ethereum) - ""The Challenges for Post Quantum Private Transfers in Ethereum""",
+,,"◔ 3. Tianyao Gu (CMU) - ""Zebra: Arithmetic Garbled RAM for Large Words from DCR""",
+,,"◔ 4. Zhengwei Tong (Duke University) - ""Persistent BitTorrent Trackers""",
+,11:00am - 11:30am ,Break (30 minutes),Andlinger - Maeder Hall Lobby
+,11:30am - 1:00pm,Session II (90 minutes),Andlinger - Maeder Hall Auditorium
+,,"◑ 1. Prof. Fan Zhang (Yale University) - ""Reversing the Panopticon: Decentralized Auditing of Trusted Platforms""",
+,,"◑ 2. Hidde Lycklama (University of Toronto) - ""Artemis: Efficient Commit-and-Prove SNARKs""",
+,,"◔ 3. François-Xavier Wicht (University of Bern) - ""Track Me If You Can: An Ephemeral Coin Tracing Scheme"" ",
+,,"◔ 4. Gustavo Valverde (Zcash Foundation) - ""Composing FHE, ZK, and Delegated Consent for x402 Agent Payments""",
+,1:00 - 2:00pm,Lunch ~Pizza Den~,Andlinger - Maeder Hall Lobby
+,2:00 - 3:30pm,Session III (90 minutes),Andlinger - Maeder Hall Auditorium
+,,"◑ 1. Andrew Miller (Teleport, FlashbotsX, IC3) - ""TEE for Consumer Apps and Agents""",
+,,"◑ 2. Amit Agarwal (Category Labs) - ""Mempool Privacy via Batched Threshold Encryption""",
+,,"◔ 3. Sylvain Bellemare (Sureshot Labs, IC3 alum) - ""Towards Verifiable Open Source Hardware Wallets""",
+,,"◔ 4. Aviv Zohar (The Hebrew University of Jerusalem) - ""AetherWeave: Sybil-Resistant Robust Peer Discovery with Stake""",
+,3:30 - 8:30pm,Allocated time for the hackathon (All Breakout Rooms),"Friend Center - 108, 110, 111, 112, 114"
+,,On your own for dinner,
+,,,
+,"Thursday - June 4, 2026 ~ BREAK DAY ~
+Chair: N/A",,
+,,On your own for breakfast,
+,9:45am - 3:30pm,Group Outing - Guided Walk & Lunch,Grounds for Sculpture
+,3:30 - 8:30pm,Allocated time for the hackathon (All Breakout Rooms),"Friend Center - 108, 110, 111, 112, 114"
+,,On your own for dinner,
+,,,
+,"Friday - June 5, 2026 ~ AI ~
+Chair: Patrick McCorry",,
+,8:30 - 9:30am,Breakfast,Andlinger - Maeder Hall Lobby
+,9:30 - 11:00am,Session I (90 minutes),Andlinger - Maeder Hall Auditorium
+,,"◑ 1. Prof. Ari Juels (Cornell Tech, IC3) - ""Crypto x AI, AI x Crypto: A Survey""",
+,,"◑ 2. Adam Zalcman (Google Quantum AI) - ""Securing Elliptic Curve Cryptocurrencies Against Quantum Vulnerabilities: Resource Estimates and Mitigations"" ",
+,,"◑ 3. Amy Zhao (Ava Labs, IC3) - ""Paper Agents, Paper Gains: Empirical Analysis of DeFi Agent Trading"" ",
+,11:00 - 11:30am ,Break (30 minutes),Andlinger - Maeder Hall Lobby
+,11:30am - 1:00pm,Session II (90 minutes),Andlinger - Maeder Hall Auditorium
+,,◑ 1. Sreeram Kannan (Eigen Labs),
+,,"◑ 2. Prof. Giulia Fanti (CMU, IC3) - ""Rethinking Internet Monetization in the Age of AI""",
+,,"◑ 3. Pranay Anchuri (Offchain Labs) - ""How To Sample Your Way Into Practical AI Inference"" ",
+,1:00 - 2:00pm,Lunch ~Mamoun's Falafel~,Andlinger - Maeder Hall Lobby
+,2:00 - 3:30pm,Session III (90 minutes),Andlinger - Maeder Hall Auditorium
+,,"◔ 1. Surya Rastogi (Chainalysis) - ""Blockchain Autoresearch""",
+,,◔ 2. Rose Silver (CMU) - Post AI acknowledgement encyclopedia (Special Performance),
+,,"⬤ 3. Town Hall led by Prof. Ari Juels (Cornell Tech, IC3) & Prof. Giulia Fanti (CMU, IC3)",
+,3:30 - 4:00pm ,Break (30 minutes),Andlinger - Maeder Hall Lobby
+,4:00 - 5:00pm,⬤ Shape Rotator - Presentation,Andlinger - Maeder Hall Auditorium
+,5:00 - 6:00pm,Allocated time for the hackathon (All Breakout Rooms),"Friend Center - 108, 110, 111, 112, 114"
+,6:00 - 8:00pm,Cocktail Reception,Mosaic Restaurant @Princeton Art Museum
+,,,
+,"Saturday - June 6, 2026 ~ Distributed Systems, Mechanism Design & Student Presentations ~
+Chair: Lorenz Breidenbach",,
+,8:30 - 9:30am,Breakfast,Andlinger - Maeder Hall Lobby
+,9:45 - 11:00am,Session I (75 minutes),Andlinger - Maeder Hall Auditorium
+,,"◑ 1. Prof. Christian Cachin (University of Bern) - ""New Results on Erasure Codes""",
+,,"◔ 2. Roi Bar-Zur (Tel Aviv University) - ""On Co-Staking: Multi-Token Collateral Under Volatile Pricing""",
+,,"◔ 3. Ulysse Pavloff (University of Bern) - ""Is Ethereum Incentive-Compatible?"" ",
+,,"◔ 4. James Austgen (Cornell Tech) - ""Crossroads: A Smart Contract Layer for Chain-Abstracted Assets""",
+,11:00 - 11:30am ,Break (30 minutes),Andlinger - Maeder Hall Lobby
+,11:30am - 1:00pm,Session II (90 minutes),Andlinger - Maeder Hall Auditorium
+,,"◑ 1. Yan Ji (Chainlink Labs) - ""Chainlink DKG and Confidential Compute""",
+,,"◔ 2. Sarisht Wadhwa (Duke University) - ""Perils of Parallelism: Transaction Fee Mechanisms under Execution Uncertainty""",
+,,"◔ 3. Giuliano Losa (Stellar) - ""Fast Deterministically Safe Proof-of-Work Consensus""",
+,,◑ 4. Prof. Elaine Shi (CMU),
+,1:00 - 2:00pm,Lunch ~Thai Village~,Andlinger - Maeder Hall Lobby
+,2:00 - 3:30pm,Session III - Student Presentations (90 mins),Andlinger - Maeder Hall Auditorium
+,,"◔ 1. Wenhao Wang (Yale University) - ""Blockspace Under Pressure: An Analysis of Spam MEV on High-Throughput Blockchains""",
+,,"◔ 2. Aadityan Ganesh (Princeton University) - ""Escaping the Monopolist: An Economic Model of Censorship Resistance in Mutli-Proposer Protocols""",
+,,"◔ 3. Silei Ren (Cornell University) - ""Type-Confusion Security""",
+,,"◔ 4. Sen Yang (Yale University) - ""Your Loss is My Gain: Low-Stake Attacks on Liquid Staking Pools""",
+,,"◔ 5. Fatima Elsheimy (Yale University) - ""Censorship Resistance vs Throughput in Multi-Proposer BFT Protocols"" ",
+,,"◔ 6. Uka Zhu (NYU) - ""How Bitcoin Markets Learned to Price the Halving""",
+,3:30 - 4:00pm ,Break (30 minutes),Andlinger - Maeder Hall Lobby
+,4:00 - 5:30pm,Session IV - Student/Postdoc Presentations (90 mins),Andlinger - Maeder Hall Auditorium
+,,"◔ 1. Kaiyang Chang (UCSB) - ""Minimum Trust Cross-Chain Transactions""",
+,,"◔ 2. Aviv Yaish (Yale University) - ""Inequality in the Age of Pseudonymity""",
+,,"◔ 3. Marwa Mouallem (Technion) - ""Resilient Alerting Protocols for Blockchains""",
+,,"◔ 4. Sofia Bonazzola (Yale University) - ""Cryptography and Auction Design for Transaction Fee Mechanisms""",
+,,"◔ 5. Samuel Breckenridge (Cornell Tech) - ""Cast Iron: Coercion-Resistant Blockchain Voting""",
+,,"◔ 6. Niusha Moshrefi (Princeton University) - ""ParlayMarket: Automated Market Making for Parlay-style Joint Contracts""",
+,5:30 - 8:30pm,Allocated time for the hackathon (All Breakout Rooms),"Friend Center - 108, 110, 111, 112, 114"
+,,On your own for dinner,
+,,,
+,"Sunday - June 7, 2026 ~ Presentations ~
+Chair: Haaroon Yousaf",,
+,9:00 - 10:00am,Breakfast,EQuad Cafe
+,9:00am - 1:00pm,Allocated time for the hackathon (All Breakout Rooms),"Friend Center - 108, 110, 111, 112, 114"
+,1:00 - 2:00pm,Lunch ~Better for You Buffet~,Commons - D301
+,2:00 - 4:30pm,Team Presentations,Commons - D301
+,,Get ready for the party!,
+,6:00 - 9:00pm,Closing Dinner & Awards Ceremony ~Sponsored by Chainlink~,Prospect House`;
+
+    const state = {
+      days: [],
+      events: [],
+      activeEventId: null,
+      activeDayId: null
+    };
+
+    const agendaEl = document.querySelector("#agenda");
+    const tabsEl = document.querySelector("#tabs");
+    const statusEl = document.querySelector("#status");
+
+    function parseCsv(text) {
+      const rows = [];
+      let row = [];
+      let cell = "";
+      let inQuotes = false;
+
+      for (let i = 0; i < text.length; i += 1) {
+        const char = text[i];
+        const next = text[i + 1];
+
+        if (char === '"') {
+          if (inQuotes && next === '"') {
+            cell += '"';
+            i += 1;
+          } else {
+            inQuotes = !inQuotes;
+          }
+          continue;
+        }
+
+        if (char === "," && !inQuotes) {
+          row.push(cell);
+          cell = "";
+          continue;
+        }
+
+        if ((char === "\n" || char === "\r") && !inQuotes) {
+          if (char === "\r" && next === "\n") i += 1;
+          row.push(cell);
+          rows.push(row);
+          row = [];
+          cell = "";
+          continue;
+        }
+
+        cell += char;
+      }
+
+      row.push(cell);
+      rows.push(row);
+      return rows.filter(r => r.some(c => c.trim()));
+    }
+
+    function normalizeText(value) {
+      return String(value || "")
+        .replace(/\u00a0/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    function parseDayHeader(text, index) {
+      const normalized = normalizeText(text);
+      const [titlePart, chairPart = ""] = text.split(/\n+/);
+      const title = normalizeText(titlePart);
+      const dateMatch = title.match(/(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s*-\s*(June)\s+(\d{1,2}),\s*(\d{4})/i);
+      const topicMatch = title.match(/~\s*(.*?)\s*~/);
+      const chairMatch = chairPart.match(/Chair:\s*(.*)/i);
+      const dayName = dateMatch ? dateMatch[1] : `Day ${index + 1}`;
+      const dayNumber = dateMatch ? Number(dateMatch[3]) : index + 1;
+      const year = dateMatch ? Number(dateMatch[4]) : EVENT_YEAR;
+      const dateKey = `${year}-06-${String(dayNumber).padStart(2, "0")}`;
+
+      return {
+        id: `day-${dateKey}`,
+        dateKey,
+        dayName,
+        short: dayName.slice(0, 3),
+        title,
+        topic: topicMatch ? topicMatch[1].trim() : "",
+        chair: chairMatch ? chairMatch[1].trim() : "",
+        events: []
+      };
+    }
+
+    function parseAgenda(rows) {
+      const days = [];
+      let currentDay = null;
+      let currentEvent = null;
+      let eventCount = 0;
+
+      rows.forEach((row) => {
+        const time = normalizeText(row[1]);
+        const name = normalizeText(row[2]);
+        const place = normalizeText(row[3]);
+        const possibleHeader = row.find(cell => /Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday/.test(cell || ""));
+
+        if (possibleHeader && /June\s+\d{1,2},\s*2026/i.test(possibleHeader)) {
+          currentDay = parseDayHeader(possibleHeader, days.length);
+          days.push(currentDay);
+          currentEvent = null;
+          return;
+        }
+
+        if (!currentDay || name === "Legend:" || /^◔|^◑|^⬤/.test(place)) return;
+
+        if (time) {
+          const event = {
+            id: `event-${eventCount += 1}`,
+            dayId: currentDay.id,
+            dateKey: currentDay.dateKey,
+            time,
+            name,
+            place,
+            talks: []
+          };
+          currentDay.events.push(event);
+          currentEvent = event;
+          return;
+        }
+
+        if (name && /^[◔◑◕⬤]/.test(name) && currentEvent) {
+          currentEvent.talks.push(name);
+          return;
+        }
+
+        if (name) {
+          const event = {
+            id: `event-${eventCount += 1}`,
+            dayId: currentDay.id,
+            dateKey: currentDay.dateKey,
+            time: "",
+            name,
+            place,
+            talks: []
+          };
+          currentDay.events.push(event);
+          currentEvent = event;
+        }
+      });
+
+      const events = days.flatMap(day => day.events);
+      events.forEach(event => {
+        const range = parseTimeRange(event.dateKey, event.time);
+        event.start = range.start;
+        event.end = range.end;
+      });
+      return { days, events };
+    }
+
+    function parseTimeRange(dateKey, value) {
+      const cleaned = normalizeText(value).replace(/\s+/g, "");
+      if (!cleaned) return { start: null, end: null };
+      const parts = cleaned.split("-");
+      if (parts.length < 2) return { start: null, end: null };
+
+      const endMeridiem = (parts[1].match(/am|pm/i) || [""])[0].toLowerCase();
+      const startText = /am|pm/i.test(parts[0]) ? parts[0] : `${parts[0]}${endMeridiem}`;
+      const endText = parts[1];
+      let start = parseClock(dateKey, startText);
+      let end = parseClock(dateKey, endText);
+
+      if (start && end && end <= start) {
+        const alternate = parseClock(dateKey, startText.replace(/am/i, "pm"));
+        if (alternate && alternate < end) start = alternate;
+      }
+
+      return { start, end };
+    }
+
+    function parseClock(dateKey, value) {
+      const match = value.match(/^(\d{1,2})(?::(\d{2}))?(am|pm)$/i);
+      if (!match) return null;
+      let hour = Number(match[1]);
+      const minute = Number(match[2] || 0);
+      const meridiem = match[3].toLowerCase();
+      if (meridiem === "pm" && hour !== 12) hour += 12;
+      if (meridiem === "am" && hour === 12) hour = 0;
+      return new Date(`${dateKey}T${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}:00${ET_OFFSET}`);
+    }
+
+    function eventType(name) {
+      const lower = name.toLowerCase();
+      if (lower.includes("breakfast") || lower.includes("lunch") || lower.includes("dinner") || lower.includes("reception")) return { label: "Meal", className: "pill-meal" };
+      if (lower.includes("hackathon")) return { label: "Hack", className: "pill-hack" };
+      if (lower.includes("break")) return { label: "Break", className: "pill-break" };
+      if (lower.includes("outing")) return { label: "Outing", className: "pill-outing" };
+      if (lower.includes("presentation")) return { label: "Talks", className: "pill-talks" };
+      if (lower.includes("session")) return { label: "Session", className: "pill-session" };
+      return null;
+    }
+
+    function talkMarkup(talk) {
+      const markerMatch = talk.match(/^([◔◑◕⬤])\s*/);
+      const marker = markerMatch ? markerMatch[1] : "";
+      const text = marker ? talk.slice(markerMatch[0].length) : talk;
+      return `<div class="talk"><span class="talk-mark">${escapeHtml(marker)}</span><span>${escapeHtml(text)}</span></div>`;
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[char]);
+    }
+
+    function render() {
+      tabsEl.innerHTML = state.days.map(day => (
+        `<button class="tab" type="button" data-day="${day.id}" aria-label="${escapeHtml(day.dayName)}">${escapeHtml(day.short)}</button>`
+      )).join("");
+
+      agendaEl.innerHTML = state.days.map(day => `
+        <section class="day" id="${day.id}">
+          <div class="day-heading">
+            <h2 class="day-title">${escapeHtml(day.dayName)}${day.topic ? ` · ${escapeHtml(day.topic)}` : ""}</h2>
+            <div class="day-meta">${escapeHtml(day.dateKey.replace("2026-06-", "June "))}${day.chair ? ` · Chair: ${escapeHtml(day.chair)}` : ""}</div>
+          </div>
+          ${day.events.map(event => {
+            const kind = eventType(event.name);
+            return `
+              <article class="event" id="${event.id}" data-event-id="${event.id}">
+                <div class="progress-track"></div>
+                <div class="progress-fill"></div>
+                <div class="content">
+                  <div class="name-row">
+                    <div class="name">
+                      ${escapeHtml(event.name)}
+                      ${event.time ? `<span class="session-time">${escapeHtml(normalizeText(event.time))}</span>` : ""}
+                    </div>
+                    ${kind ? `<div class="pill ${kind.className}">${escapeHtml(kind.label)}</div>` : ""}
+                  </div>
+                  ${event.place ? `<div class="place">${escapeHtml(event.place)}</div>` : ""}
+                  ${event.talks.length ? `<div class="talks">${event.talks.map(talkMarkup).join("")}</div>` : ""}
+                </div>
+              </article>
+            `;
+          }).join("")}
+        </section>
+      `).join("");
+
+      tabsEl.addEventListener("click", event => {
+        const tab = event.target.closest("[data-day]");
+        if (!tab) return;
+        document.getElementById(tab.dataset.day)?.scrollIntoView({ block: "start" });
+      });
+    }
+
+    function updateCurrentTime({ jump = false } = {}) {
+      const now = new Date();
+      let active = state.events.find(event => event.start && event.end && now >= event.start && now < event.end);
+      let next = state.events.find(event => event.start && now < event.start);
+      const newest = active || next || state.events[state.events.length - 1];
+
+      document.querySelectorAll(".event").forEach(el => {
+        const event = state.events.find(candidate => candidate.id === el.dataset.eventId);
+        el.classList.remove("is-past", "is-now", "is-next");
+        el.querySelector(".now-marker")?.remove();
+        const fill = el.querySelector(".progress-fill");
+        if (fill) fill.style.height = "0";
+
+        if (!event?.start || !event?.end) return;
+        if (now >= event.end) {
+          el.classList.add("is-past");
+          if (fill) fill.style.height = "100%";
+        } else if (active && event.id === active.id) {
+          const elapsed = now - event.start;
+          const duration = event.end - event.start;
+          const pct = Math.max(0, Math.min(100, (elapsed / duration) * 100));
+          el.classList.add("is-now");
+          if (fill) fill.style.height = `${pct}%`;
+          const marker = document.createElement("div");
+          marker.className = "now-marker";
+          marker.style.top = `${pct}%`;
+          el.appendChild(marker);
+        } else if (!active && next && event.id === next.id) {
+          el.classList.add("is-next");
+        }
+      });
+
+      document.querySelectorAll(".tab").forEach(tab => {
+        tab.classList.toggle("is-active", tab.dataset.day === newest?.dayId);
+      });
+
+      if (active) {
+        statusEl.textContent = "Now";
+      } else if (next) {
+        statusEl.textContent = "Next";
+      } else {
+        statusEl.textContent = "Done";
+      }
+
+      if (jump && newest) {
+        const target = document.getElementById(newest.id);
+        setTimeout(() => target?.scrollIntoView({ block: "center" }), 80);
+      }
+    }
+
+    async function loadAgenda() {
+      let source = FALLBACK_CSV;
+      try {
+        const response = await fetch(SHEET_CSV_URL, { cache: "no-store" });
+        if (response.ok) source = await response.text();
+      } catch (error) {
+        console.info("Using embedded agenda data because the live sheet could not be loaded.", error);
+      }
+
+      const parsed = parseAgenda(parseCsv(source));
+      state.days = parsed.days;
+      state.events = parsed.events;
+
+      if (!state.events.length) {
+        agendaEl.innerHTML = `<div class="empty">No agenda rows found.</div>`;
+        statusEl.textContent = "Empty";
+        return;
+      }
+
+      render();
+      updateCurrentTime({ jump: true });
+      setInterval(updateCurrentTime, 30000);
+    }
+
+    loadAgenda();
+  </script>
+</body>
+</html>
