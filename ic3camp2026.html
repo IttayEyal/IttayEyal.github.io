@@ -347,6 +347,7 @@
 
   <script>
     const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRtJKFC4vV3uyMLIN2d9KtCiIjGLjTLexZJDgaFRQftXjfUUpy5eJt6zh0mK-C0_x-WKaK3kh9iabeE/pub?output=csv";
+    const CACHE_KEY = "ic3camp2026-agenda-csv";
     const EVENT_YEAR = 2026;
     const ET_OFFSET = "-04:00";
 
@@ -493,6 +494,7 @@ Chair: Haaroon Yousaf",,
 
     const agendaEl = document.querySelector("#agenda");
     const tabsEl = document.querySelector("#tabs");
+    let renderedSource = "";
 
     function parseCsv(text) {
       const rows = [];
@@ -726,11 +728,11 @@ Chair: Haaroon Yousaf",,
         </section>
       `).join("");
 
-      tabsEl.addEventListener("click", event => {
+      tabsEl.onclick = event => {
         const tab = event.target.closest("[data-day]");
         if (!tab) return;
         document.getElementById(tab.dataset.day)?.scrollIntoView({ block: "start" });
-      });
+      };
     }
 
     function updateCurrentTime({ jump = false } = {}) {
@@ -775,26 +777,63 @@ Chair: Haaroon Yousaf",,
       }
     }
 
-    async function loadAgenda() {
-      let source = FALLBACK_CSV;
+    function getCachedAgenda() {
       try {
-        const response = await fetch(SHEET_CSV_URL, { cache: "no-store" });
-        if (response.ok) source = await response.text();
+        return localStorage.getItem(CACHE_KEY);
       } catch (error) {
-        console.info("Using embedded agenda data because the live sheet could not be loaded.", error);
+        return null;
+      }
+    }
+
+    function cacheAgenda(source) {
+      try {
+        localStorage.setItem(CACHE_KEY, source);
+      } catch (error) {
+        console.info("Could not cache agenda data.", error);
+      }
+    }
+
+    function applyAgenda(source, { jump = false } = {}) {
+      const parsed = parseAgenda(parseCsv(source));
+
+      if (!parsed.events.length) {
+        agendaEl.innerHTML = `<div class="empty">No agenda rows found.</div>`;
+        return false;
       }
 
-      const parsed = parseAgenda(parseCsv(source));
       state.days = parsed.days;
       state.events = parsed.events;
-
-      if (!state.events.length) {
-        agendaEl.innerHTML = `<div class="empty">No agenda rows found.</div>`;
-        return;
-      }
-
+      renderedSource = source;
       render();
-      updateCurrentTime({ jump: true });
+      updateCurrentTime({ jump });
+      return true;
+    }
+
+    async function refreshAgenda() {
+      try {
+        const response = await fetch(SHEET_CSV_URL, { cache: "no-store" });
+        if (!response.ok) return;
+
+        const source = await response.text();
+        if (source === renderedSource) {
+          cacheAgenda(source);
+          return;
+        }
+
+        if (!applyAgenda(source)) return;
+
+        cacheAgenda(source);
+      } catch (error) {
+        console.info("Using cached or embedded agenda data because the live sheet could not be loaded.", error);
+      }
+    }
+
+    function loadAgenda() {
+      const cached = getCachedAgenda();
+      if (!cached || !applyAgenda(cached, { jump: true })) {
+        applyAgenda(FALLBACK_CSV, { jump: true });
+      }
+      refreshAgenda();
       setInterval(updateCurrentTime, 30000);
     }
 
