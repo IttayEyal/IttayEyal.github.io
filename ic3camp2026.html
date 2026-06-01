@@ -47,19 +47,13 @@
     }
 
     .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 30;
       background: rgba(246, 247, 242, .96);
       border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(14px);
     }
 
     .title {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
       width: 100%;
       padding: 12px 12px 10px;
     }
@@ -70,21 +64,6 @@
       line-height: 1.15;
       font-weight: 780;
       letter-spacing: 0;
-    }
-
-    .status {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 72px;
-      padding: 6px 8px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--panel);
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1;
-      white-space: nowrap;
     }
 
     .tabs {
@@ -124,7 +103,7 @@
     .day {
       width: 100vw;
       padding-top: 12px;
-      scroll-margin-top: 108px;
+      scroll-margin-top: 0;
     }
 
     .day-heading {
@@ -154,7 +133,7 @@
       padding: 10px 10px 10px 12px;
       border-top: 1px solid var(--line);
       background: var(--panel);
-      scroll-margin-top: 116px;
+      scroll-margin-top: 0;
     }
 
     .event:last-child {
@@ -357,7 +336,6 @@
     <header class="topbar">
       <div class="title">
         <h1>IC3 Camp Agenda</h1>
-        <div class="status" id="status">Loading</div>
       </div>
       <nav class="tabs" id="tabs" aria-label="Agenda days"></nav>
     </header>
@@ -515,7 +493,6 @@ Chair: Haaroon Yousaf",,
 
     const agendaEl = document.querySelector("#agenda");
     const tabsEl = document.querySelector("#tabs");
-    const statusEl = document.querySelector("#status");
 
     function parseCsv(text) {
       const rows = [];
@@ -792,14 +769,6 @@ Chair: Haaroon Yousaf",,
         tab.classList.toggle("is-active", tab.dataset.day === newest?.dayId);
       });
 
-      if (active) {
-        statusEl.textContent = "Now";
-      } else if (next) {
-        statusEl.textContent = "Next";
-      } else {
-        statusEl.textContent = "Done";
-      }
-
       if (jump && newest) {
         const target = document.getElementById(newest.id);
         setTimeout(() => target?.scrollIntoView({ block: "center" }), 80);
@@ -821,7 +790,6 @@ Chair: Haaroon Yousaf",,
 
       if (!state.events.length) {
         agendaEl.innerHTML = `<div class="empty">No agenda rows found.</div>`;
-        statusEl.textContent = "Empty";
         return;
       }
 
