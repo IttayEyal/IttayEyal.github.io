@@ -1,0 +1,241 @@
+<title>One Plus Night Mode</title>
+<meta name="theme-color" content="#16120f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: one centered control column — knob, state, secondary actions, then a quiet technical footer. */
+  :root {
+    --bg: #eceae6;          /* pale ash */
+    --surface: #f7f5f2;
+    --fg: #1d1915;          /* walnut ink */
+    --muted: #6d645b;
+    --line: #d5cfc7;
+    --copper: #a8602c;
+    --copper-hi: #d08a4f;
+    --on-glow: rgba(168, 96, 44, .28);
+    --bad: #a3332a;
+    --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #16120f; --surface: #211b16; --fg: #f1e7db; --muted: #a39282; --line: #3a3029;
+      --copper: #c97b41; --copper-hi: #eaa66a; --on-glow: rgba(234, 166, 106, .30); --bad: #e0756b;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #16120f; --surface: #211b16; --fg: #f1e7db; --muted: #a39282; --line: #3a3029;
+    --copper: #c97b41; --copper-hi: #eaa66a; --on-glow: rgba(234, 166, 106, .30); --bad: #e0756b;
+    color-scheme: dark;
+  }
+
+  html, body { height: 100%; }
+  body {
+    background: var(--bg); color: var(--fg); font: 16px/1.5 var(--body);
+    padding: 24px 16px; box-sizing: border-box;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  main { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; gap: 28px; flex: 1; }
+
+  header { width: 100%; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .brand {
+    font-family: var(--display); font-variation-settings: "wdth" 125; font-weight: 750;
+    font-size: 15px; letter-spacing: .14em; text-transform: uppercase; margin: 0;
+  }
+  .model { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+
+  .knob {
+    --size: min(64vw, 240px);
+    width: var(--size); height: var(--size); border-radius: 50%; margin-top: 12px;
+    border: 0; padding: 0; cursor: pointer; position: relative; color: var(--fg);
+    background:
+      radial-gradient(circle at 50% 50%, var(--surface) 0 58%, transparent 58.5%),
+      repeating-conic-gradient(from 0deg, var(--line) 0 1.2deg, transparent 1.2deg 6deg),
+      var(--surface);
+    box-shadow: inset 0 0 0 3px var(--copper), 0 1px 0 var(--line), 0 18px 40px -22px rgba(0,0,0,.45);
+    transition: box-shadow .35s ease, transform .15s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .knob:active { transform: scale(.97); }
+  .knob:focus-visible { outline: 3px solid var(--copper-hi); outline-offset: 6px; }
+  .knob[data-state="on"] { box-shadow: inset 0 0 0 3px var(--copper-hi), 0 0 0 10px var(--on-glow), 0 18px 40px -22px rgba(0,0,0,.45); }
+  .knob svg { width: 38%; height: 38%; position: absolute; inset: 0; margin: auto; transition: opacity .3s ease; }
+  .knob .moon { fill: var(--copper-hi); opacity: 0; }
+  .knob .full { fill: none; stroke: var(--muted); stroke-width: 6; opacity: 1; }
+  .knob[data-state="on"] .moon { opacity: 1; }
+  .knob[data-state="on"] .full { opacity: 0; }
+  .knob[aria-busy="true"] { cursor: progress; }
+  .knob[aria-busy="true"]::after {
+    content: ""; position: absolute; inset: -9px; border-radius: 50%;
+    border: 2px solid transparent; border-top-color: var(--copper-hi); animation: spin 1s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .state { text-align: center; display: flex; flex-direction: column; gap: 4px; min-height: 5.5em; }
+  .state h1 {
+    margin: 0; font-family: var(--display); font-variation-settings: "wdth" 112; font-weight: 700;
+    font-size: clamp(28px, 8vw, 36px); line-height: 1.1; text-wrap: balance;
+  }
+  .state p { margin: 0; color: var(--muted); font-size: 15px; text-wrap: balance; }
+  .state p.err { color: var(--bad); }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .actions button {
+    font: 600 14px/1 var(--body); letter-spacing: .02em; color: var(--fg);
+    background: transparent; border: 1.5px solid var(--line); border-radius: 999px;
+    padding: 12px 18px; cursor: pointer;
+  }
+  .actions button:hover { border-color: var(--copper); }
+  .actions button:focus-visible { outline: 2px solid var(--copper-hi); outline-offset: 2px; }
+  .actions button:disabled { opacity: .45; cursor: default; }
+
+  .banner {
+    width: 100%; box-sizing: border-box; border: 1.5px solid var(--bad); color: var(--fg);
+    border-radius: 10px; padding: 12px 14px; font-size: 14px;
+  }
+  .banner b { color: var(--bad); }
+
+  footer {
+    width: 100%; max-width: 420px; border-top: 1px solid var(--line); padding-top: 14px; margin-top: 24px;
+    font-size: 13px; color: var(--muted); display: flex; flex-direction: column; gap: 8px;
+  }
+  footer ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
+  footer code { font-family: var(--mono); font-size: 11.5px; word-break: break-all; color: var(--fg); }
+  @media (prefers-reduced-motion: reduce) { .knob, .knob svg { transition: none; } .knob[aria-busy="true"]::after { animation-duration: 3s; } }
+</style>
+
+<main>
+  <header>
+    <p class="brand">Night mode</p>
+    <span class="model">Klipsch The One Plus</span>
+  </header>
+
+  <div id="banner" class="banner" hidden></div>
+
+  <button id="knob" class="knob" data-state="unknown" aria-label="Toggle night mode" aria-busy="false">
+    <svg class="full" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34"/></svg>
+    <svg class="moon" viewBox="0 0 100 100" aria-hidden="true">
+      <mask id="cut"><rect width="100" height="100" fill="#fff"/><circle cx="66" cy="38" r="30" fill="#000"/></mask>
+      <circle cx="50" cy="50" r="38" mask="url(#cut)"/>
+    </svg>
+  </button>
+
+  <div class="state" aria-live="polite">
+    <h1 id="title">Tap the knob</h1>
+    <p id="detail">It reads the speaker and flips night mode.</p>
+  </div>
+
+  <div class="actions">
+    <button id="on">Turn on</button>
+    <button id="off">Turn off</button>
+    <button id="check">Check</button>
+  </div>
+</main>
+
+<footer>
+  <ul>
+    <li>Close the Klipsch app first. The speaker accepts one control connection at a time.</li>
+    <li>Needs Chrome on Android with Bluetooth on. Chrome asks you to pick the speaker the first time each visit.</li>
+  </ul>
+  <div>Writes <code>01</code>/<code>00</code> to characteristic <code>da6d0f05-0d18-442c-babe-f85b5baa6f11</code></div>
+</footer>
+
+<script>
+const SVC = "da6d0f01-0d18-442c-babe-f85b5baa6f11";
+const NIGHT = "da6d0f05-0d18-442c-babe-f85b5baa6f11";
+const $ = (id) => document.getElementById(id);
+const knob = $("knob"), buttons = [knob, $("on"), $("off"), $("check")];
+let device = null;
+
+function show(state, title, detail, isErr = false) {
+  if (state) knob.dataset.state = state;
+  $("title").textContent = title;
+  $("detail").textContent = detail;
+  $("detail").className = isErr ? "err" : "";
+}
+
+function render(on, verb) {
+  show(on ? "on" : "off", on ? "Night mode is on" : "Night mode is off",
+       (verb || "Read") + " at " + new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) + ".");
+  try { localStorage.setItem("night", on ? "1" : "0"); } catch {}
+}
+
+function blocked(html) {
+  $("banner").innerHTML = html;
+  $("banner").hidden = false;
+  buttons.forEach((b) => (b.disabled = true));
+}
+
+function withTimeout(p, ms, msg) {
+  return Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(Object.assign(new Error(msg), { name: "TimeoutError" })), ms))]);
+}
+
+async function pickDevice() {
+  if (device) return device;
+  if (navigator.bluetooth.getDevices) {
+    try {
+      const known = await navigator.bluetooth.getDevices();
+      device = known.find((d) => (d.name || "").startsWith("Klipsch")) || null;
+      if (device) return device;
+    } catch {}
+  }
+  device = await navigator.bluetooth.requestDevice({ filters: [{ namePrefix: "Klipsch" }], optionalServices: [SVC] });
+  return device;
+}
+
+async function run(action) {
+  buttons.forEach((b) => (b.disabled = true));
+  knob.setAttribute("aria-busy", "true");
+  let dev;
+  try {
+    dev = await pickDevice();
+    show(null, "Connecting…", dev.name || "Speaker");
+    const server = await withTimeout(dev.gatt.connect(), 12000, "connect timed out");
+    const ch = await (await server.getPrimaryService(SVC)).getCharacteristic(NIGHT);
+    const current = (await ch.readValue()).getUint8(0);
+    let want = action === "toggle" ? (current ? 0 : 1) : action === "on" ? 1 : action === "off" ? 0 : null;
+    if (want !== null && want !== current) await ch.writeValueWithResponse(Uint8Array.of(want));
+    const now = want === null ? current : (await ch.readValue()).getUint8(0);
+    render(!!now, want === null ? "Read" : want === current ? "Already set" : "Changed");
+  } catch (e) {
+    const name = e && e.name;
+    if (name === "NotFoundError" && /cancel/i.test(e.message)) show(null, "No speaker picked", "Tap again and choose “Klipsch The One Plus”.", true);
+    else if (name === "NotFoundError") show(null, "Speaker not found", "Close the Klipsch app on this phone, make sure the speaker is on, then try again.", true);
+    else if (name === "SecurityError") {
+      if (device) show(null, "Tap once more", "Chrome needs a fresh tap to open the speaker picker.", true);
+      else blocked("<b>Bluetooth is blocked here.</b> This view doesn't allow Web Bluetooth. Open the page directly in Chrome on Android.");
+      device = null;
+    } else if (name === "NetworkError" || name === "TimeoutError") {
+      show(null, "Couldn't connect", "The speaker is probably busy with the Klipsch app. Close the app fully, then tap again.", true);
+      device = null;
+    } else show(null, "Something went wrong", (name ? name + ": " : "") + (e && e.message ? e.message : e), true);
+  } finally {
+    try { dev && dev.gatt.connected && dev.gatt.disconnect(); } catch {}
+    knob.setAttribute("aria-busy", "false");
+    if ($("banner").hidden) buttons.forEach((b) => (b.disabled = false));
+  }
+}
+
+knob.addEventListener("click", () => run("toggle"));
+$("on").addEventListener("click", () => run("on"));
+$("off").addEventListener("click", () => run("off"));
+$("check").addEventListener("click", () => run("check"));
+
+(async () => {
+  let last = null;
+  try { last = localStorage.getItem("night"); } catch {}
+  if (last !== null) show(last === "1" ? "on" : "off", "Tap the knob", "Last seen " + (last === "1" ? "on" : "off") + " from this phone.");
+  if (!navigator.bluetooth) {
+    blocked("<b>This browser can't use Bluetooth.</b> Open this page in Chrome on Android (desktop Chrome on Windows/Mac/ChromeOS works too).");
+    return;
+  }
+  const fp = document.permissionsPolicy || document.featurePolicy;
+  if (fp && fp.allowsFeature && !fp.allowsFeature("bluetooth")) {
+    blocked("<b>Bluetooth is blocked here.</b> This view doesn't allow Web Bluetooth. Open the page directly in Chrome on Android.");
+    return;
+  }
+  try { if (navigator.bluetooth.getAvailability && !(await navigator.bluetooth.getAvailability())) show(null, "Bluetooth is off", "Turn on Bluetooth, then tap the knob.", true); } catch {}
+})();
+</script>
